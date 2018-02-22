@@ -1,0 +1,22 @@
+% jupyter nbconvert --to pdf HW0.ipynb --template clean_report.tplx
+((*- extends 'article.tplx' -*))
+
+((* block title *))
+    \title{((( nb.metadata.get("title", "") )))}            
+((* endblock title *))
+
+((* block any_cell *))
+	((* if cell['metadata'].get("include",1)==1 *))
+		((( super() )))
+	((* endif *))
+((* endblock any_cell *))
+
+% Author info
+((* block author *))
+\author{
+  \textbf{Name}: Rajat Vadiraj Dwaraknath\\
+  \textbf{Roll Number}: EE16B033
+}
+((* endblock author *))
+
+
