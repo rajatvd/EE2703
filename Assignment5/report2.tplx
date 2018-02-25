@@ -1,0 +1,88 @@
+((*- extends 'article.tplx' -*))
+
+((* block docclass *))
+    \documentclass{article}
+    \usepackage{float}
+((* endblock docclass *))
+
+((* block title *))
+    \title{((( nb.metadata.get("title", "") )))}            
+((* endblock title *))
+
+% Author info
+((* block author *))
+\author{
+  \textbf{Name}: Rajat Vadiraj Dwaraknath\\
+  \textbf{Roll Number}: EE16B033
+}
+((* endblock author *))
+
+
+% Draw a figure using the graphicx package.
+((* macro draw_figure(filename) -*))
+((* set filename = filename | posix_path *))
+((*- block figure scoped -*))
+    \begin{figure}[H]
+        \begin{center}
+        \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{((( filename )))}
+        \end{center}
+    \end{figure}
+((*- endblock figure -*))
+((*- endmacro -*))
+
+% Display markdown
+((* block data_markdown -*))
+    ((( output.data['text/markdown'] | citation2latex | strip_files_prefix | markdown2latex)))
+((* endblock data_markdown *))
+
+% Render markdown
+((* block markdowncell scoped *))
+    ((( cell.source | citation2latex | strip_files_prefix | markdown2latex)))
+((* endblock markdowncell *))
+
+
+%===============================================================================
+% Input
+%===============================================================================
+
+((* block input scoped *))
+    ((( '\n'  )))
+((*- if cell.metadata.hide_input or nb.metadata.hide_input -*))
+((*- else -*))
+    ((( my_add_prompt(cell.source | highlight_code(strip_verbatim=True), cell, 'In ', 'incolor') )))
+    ((( '\n'  )))
+((*- endif -*))
+((* endblock input *))
+
+
+%===============================================================================
+% Output
+%===============================================================================
+
+((* block execute_result scoped *))
+    ((*- for type in output.data | filter_data_type -*))
+        ((*- if type in ['text/plain']*))
+            ((( add_prompt(output.data['text/plain'] | escape_latex, cell, 'Out', 'outcolor') )))
+        ((* else -*))
+\texttt{\color{outcolor}Out[{\color{outcolor}((( cell.execution_count )))}]:}((( super() )))
+        ((*- endif -*))
+    ((*- endfor -*))
+((* endblock execute_result *))
+
+
+
+
+
+% Name: draw_prompt
+% Purpose: Renders an output/input prompt
+((* macro my_add_prompt(text, cell, prompt, prompt_color) -*))
+    ((*- if cell.execution_count is defined -*))
+    ((*- set execution_count = "" ~ (cell.execution_count | replace(None, " ")) -*))
+    ((*- else -*))
+    ((*- set execution_count = " " -*))
+    ((*- endif -*))
+    ((*- set indention =  " " * (execution_count | length + 7) -*))
+\begin{Verbatim}[commandchars=\\\{\}]
+((( text  )))
+\end{Verbatim}
+((* endmacro *))
