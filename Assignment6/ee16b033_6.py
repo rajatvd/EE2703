@@ -29,7 +29,7 @@ rcParams['figure.figsize'] = 12,9
 rcParams['font.size'] = 18
 rcParams['text.usetex'] = True
 
-def simulateTubelight(n,M,nk,u0,p,Msig):
+def simulateTubelight(n,M,nk,u0,p,Msig,accurateCollisions=False):
     """
     Simulate a tubelight and return the electron positions and velocities,
     and positions of photon emissions.
@@ -40,6 +40,7 @@ def simulateTubelight(n,M,nk,u0,p,Msig):
     u0: threshold voltage for ionization
     p: probability of ionization given an electron is faster than the threshold
     Msig: stddev of number of electrons generated per timestep
+    accurateCollisions: whether to consider accurate updates after collisions
     
     """
 
@@ -76,21 +77,24 @@ def simulateTubelight(n,M,nk,u0,p,Msig):
         u[kk]=0
 
         # ionization check
-        kk = where(u>u0)[0]
+        kk = where(u>=u0)[0]
         ll=where(rand(len(kk))<=p);
         kl=kk[ll];
 
         # ionize
         dt = rand(len(kl))
-        #xx[kl]=xx[kl]-dx[kl]+((u[kl]-1)*dt+0.5*dt*dt)
-        xx[kl]=xx[kl]-dx[kl]*dt
-
+        xx[kl]=xx[kl]-dx[kl]+((u[kl]-1)*dt+0.5*dt*dt)
         u[kl]=0
+        
+        if accurateCollisions:
+            u[kl]+=1-dt
+            xx[kl]+=0.5*(1-dt)**2
 
         # add emissions
         I.extend(xx[kl].tolist())
         
     return X,V,I
+
 
 
 
@@ -127,7 +131,7 @@ def plotGraphs(X,V,I):
     return ints,bins
 
 
-X,V,I = simulateTubelight(n,M,nk,u0,p,Msig)
+X,V,I = simulateTubelight(n,M,nk,u0,p,Msig,True)
 ints, bins = plotGraphs(X,V,I)
 
 # Tabulate emission counts

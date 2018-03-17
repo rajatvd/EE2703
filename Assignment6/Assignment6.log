@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.27)  10 MAR 2018 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.27)  13 MAR 2018 18:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -740,34 +740,34 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 430
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 433
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 447.
+(Font)              scaled to size 11.40997pt on input line 450.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 447.
+(Font)              scaled to size 8.33606pt on input line 450.
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 447.
+(Font)              scaled to size 6.25204pt on input line 450.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 447.
+(Font)              scaled to size 11.40997pt on input line 450.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 447.
+(Font)              scaled to size 8.33606pt on input line 450.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 447.
+(Font)              scaled to size 6.25204pt on input line 450.
 
 <Assignment6_files/Assignment6_12_0.png, id=41, 756.8275pt x 581.17125pt>
 File: Assignment6_files/Assignment6_12_0.png Graphic file (type png)
 
 <use Assignment6_files/Assignment6_12_0.png>
 Package pdftex.def Info: Assignment6_files/Assignment6_12_0.png used on input l
-ine 478.
+ine 481.
 (pdftex.def)             Requested size: 756.82565pt x 581.16983pt.
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 480--481
+Underfull \hbox (badness 10000) in paragraph at lines 483--484
 
  []
 
@@ -776,10 +776,10 @@ File: Assignment6_files/Assignment6_12_1.png Graphic file (type png)
 
 <use Assignment6_files/Assignment6_12_1.png>
 Package pdftex.def Info: Assignment6_files/Assignment6_12_1.png used on input l
-ine 483.
+ine 486.
 (pdftex.def)             Requested size: 748.79567pt x 581.16983pt.
  [4 <./Assignment6_files/Assignment6_12_0.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 485--486
+Underfull \hbox (badness 10000) in paragraph at lines 488--489
 
  []
 
@@ -788,72 +788,146 @@ File: Assignment6_files/Assignment6_12_2.png Graphic file (type png)
 
 <use Assignment6_files/Assignment6_12_2.png>
 Package pdftex.def Info: Assignment6_files/Assignment6_12_2.png used on input l
-ine 488.
+ine 491.
 (pdftex.def)             Requested size: 746.78816pt x 581.16983pt.
  [5 <./Assignment6_files/Assignment6_12_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 490--491
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 498.
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 501.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [6 <./Assignment6_files/Assignment6_12_2.png>] [7] [8]
-<Assignment6_files/Assignment6_19_0.png, id=77, 756.8275pt x 581.17125pt>
-File: Assignment6_files/Assignment6_19_0.png Graphic file (type png)
+) [6 <./Assignment6_files/Assignment6_12_2.png>]
+<Assignment6_files/Assignment6_15_0.png, id=68, 756.8275pt x 581.17125pt>
+File: Assignment6_files/Assignment6_15_0.png Graphic file (type png)
 
-<use Assignment6_files/Assignment6_19_0.png>
-Package pdftex.def Info: Assignment6_files/Assignment6_19_0.png used on input l
-ine 695.
+<use Assignment6_files/Assignment6_15_0.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_15_0.png used on input l
+ine 587.
 (pdftex.def)             Requested size: 756.82565pt x 581.16983pt.
- [9]
-Underfull \hbox (badness 10000) in paragraph at lines 697--698
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 589--590
 
  []
 
-<Assignment6_files/Assignment6_19_1.png, id=82, 748.7975pt x 581.17125pt>
-File: Assignment6_files/Assignment6_19_1.png Graphic file (type png)
+<Assignment6_files/Assignment6_15_1.png, id=74, 748.7975pt x 581.17125pt>
+File: Assignment6_files/Assignment6_15_1.png Graphic file (type png)
 
-<use Assignment6_files/Assignment6_19_1.png>
-Package pdftex.def Info: Assignment6_files/Assignment6_19_1.png used on input l
-ine 700.
+<use Assignment6_files/Assignment6_15_1.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_15_1.png used on input l
+ine 592.
 (pdftex.def)             Requested size: 748.79567pt x 581.16983pt.
- [10 <./Assignment6_files/Assignment6_19_0.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 702--703
+ [8 <./Assignment6_files/Assignment6_15_0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 594--595
 
  []
 
-<Assignment6_files/Assignment6_19_2.png, id=88, 746.79pt x 581.17125pt>
-File: Assignment6_files/Assignment6_19_2.png Graphic file (type png)
+<Assignment6_files/Assignment6_15_2.png, id=80, 746.79pt x 581.17125pt>
+File: Assignment6_files/Assignment6_15_2.png Graphic file (type png)
 
-<use Assignment6_files/Assignment6_19_2.png>
-Package pdftex.def Info: Assignment6_files/Assignment6_19_2.png used on input l
-ine 705.
+<use Assignment6_files/Assignment6_15_2.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_15_2.png used on input l
+ine 597.
 (pdftex.def)             Requested size: 746.78816pt x 581.16983pt.
- [11 <./Assignment6_files/Assignment6_19_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 707--708
+ [9 <./Assignment6_files/Assignment6_15_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 599--600
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 738.
-[12 <./Assignment6_files/Assignment6_19_2.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 738.
+[10 <./Assignment6_files/Assignment6_15_2.png>] [11] [12]
+<Assignment6_files/Assignment6_22_0.png, id=99, 756.8275pt x 581.17125pt>
+File: Assignment6_files/Assignment6_22_0.png Graphic file (type png)
+
+<use Assignment6_files/Assignment6_22_0.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_22_0.png used on input l
+ine 780.
+(pdftex.def)             Requested size: 756.82565pt x 581.16983pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 782--783
+
+ []
+
+<Assignment6_files/Assignment6_22_1.png, id=100, 756.8275pt x 581.17125pt>
+File: Assignment6_files/Assignment6_22_1.png Graphic file (type png)
+
+<use Assignment6_files/Assignment6_22_1.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_22_1.png used on input l
+ine 785.
+(pdftex.def)             Requested size: 756.82565pt x 581.16983pt.
+ [13 <./Assignment6_files/Assignment6_22_0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 787--788
+
+ []
+
+<Assignment6_files/Assignment6_22_2.png, id=107, 746.79pt x 581.17125pt>
+File: Assignment6_files/Assignment6_22_2.png Graphic file (type png)
+
+<use Assignment6_files/Assignment6_22_2.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_22_2.png used on input l
+ine 790.
+(pdftex.def)             Requested size: 746.78816pt x 581.16983pt.
+ [14 <./Assignment6_files/Assignment6_22_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 792--793
+
+ []
+
+<Assignment6_files/Assignment6_26_0.png, id=113, 756.8275pt x 581.17125pt>
+File: Assignment6_files/Assignment6_26_0.png Graphic file (type png)
+
+<use Assignment6_files/Assignment6_26_0.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_26_0.png used on input l
+ine 827.
+(pdftex.def)             Requested size: 756.82565pt x 581.16983pt.
+ [15 <./Assignment6_files/Assignment6_22_2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 829--830
+
+ []
+
+<Assignment6_files/Assignment6_26_1.png, id=119, 756.8275pt x 581.17125pt>
+File: Assignment6_files/Assignment6_26_1.png Graphic file (type png)
+
+<use Assignment6_files/Assignment6_26_1.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_26_1.png used on input l
+ine 832.
+(pdftex.def)             Requested size: 756.82565pt x 581.16983pt.
+ [16 <./Assignment6_files/Assignment6_26_0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 834--835
+
+ []
+
+<Assignment6_files/Assignment6_26_2.png, id=125, 746.79pt x 581.17125pt>
+File: Assignment6_files/Assignment6_26_2.png Graphic file (type png)
+
+<use Assignment6_files/Assignment6_26_2.png>
+Package pdftex.def Info: Assignment6_files/Assignment6_26_2.png used on input l
+ine 837.
+(pdftex.def)             Requested size: 746.78816pt x 581.16983pt.
+ [17 <./Assignment6_files/Assignment6_26_1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 839--840
+
+ []
+
+[18 <./Assignment6_files/Assignment6_26_2.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 880.
+ [19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 880.
  (./Assignment6.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 738.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 738.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 880.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 880.
 Package rerunfilecheck Info: File `Assignment6.out' has not changed.
 (rerunfilecheck)             Checksum: BAFF87B695CA4DA40E141E6B6CC6121F;300.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 738.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 880.
  ) 
 Here is how much of TeX's memory you used:
- 10939 strings out of 494953
- 164090 string characters out of 6180976
- 262158 words of memory out of 5000000
- 13988 multiletter control sequences out of 15000+600000
- 30574 words of font info for 80 fonts, out of 8000000 for 9000
+ 10977 strings out of 494953
+ 165230 string characters out of 6180976
+ 262159 words of memory out of 5000000
+ 14012 multiletter control sequences out of 15000+600000
+ 33332 words of font info for 87 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,6n,38p,388b,462s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,6n,38p,388b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/rajat/.tex
 mf-var/fonts/pk/ljfour/jknappen/ec/tctt1095.600pk> </home/rajat/.texmf-var/font
 s/pk/ljfour/jknappen/ec/ecit1095.600pk> </home/rajat/.texmf-var/fonts/pk/ljfour
@@ -862,10 +936,10 @@ msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on Assignment6.pdf (12 pages, 219933 bytes).
+Output written on Assignment6.pdf (19 pages, 519066 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
- 19 named destinations out of 1000 (max. 500000)
- 79 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
