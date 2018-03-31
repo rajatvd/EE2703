@@ -1,0 +1,1777 @@
+% jupyter nbconvert --to pdf HW0.ipynb --template clean_report.tplx
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    
+    \title{EE2703 Applied Programming Lab - Assignment 8}            
+
+    
+    
+\author{
+  \textbf{Name}: Rajat Vadiraj Dwaraknath\\
+  \textbf{Roll Number}: EE16B033
+}
+
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+	
+
+	
+		
+    \section{Introduction}\label{introduction}
+
+In this assignment, we use Sympy to analytically solve a matrix equation
+governing an analog circuit. We look at two circuits, an active low pass
+filter and an active high pass filter. We create matrices using node
+equations for the circuits in sympy, and then solve the equations
+analytically. We then convert the resulting sympy solution into a numpy
+function which can be called. We then use the signals toolbox we studied
+in the last assignment to understand the responses of the two circuits
+to various inputs.
+
+	
+
+	
+
+	
+
+	
+
+	
+		
+    \section{Low pass filter circuit}\label{low-pass-filter-circuit}
+
+We create a function to solve the low pass active filter circuit given
+in the assignment question as the first figure.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{sympy} \PY{k}{import} \PY{o}{*}
+\PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{signal} \PY{k}{as} \PY{n+nn}{sp}
+
+\PY{n}{H}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{n}{symbols}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{H(s) s}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\PY{n}{init\PYZus{}printing}\PY{p}{(}\PY{p}{)}
+
+\PY{k}{def} \PY{n+nf}{lowpass}\PY{p}{(}\PY{n}{R1}\PY{o}{=}\PY{l+m+mf}{10e3}\PY{p}{,}\PY{n}{R2}\PY{o}{=}\PY{l+m+mf}{10e3}\PY{p}{,}\PY{n}{C1}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}9}\PY{p}{,}\PY{n}{C2}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}9}\PY{p}{,}\PY{n}{G}\PY{o}{=}\PY{l+m+mf}{1.586}\PY{p}{,}\PY{n}{Vi}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Solve the given lowpass filter circuit for a given input Vi.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{A}\PY{o}{=}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{G}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{n}{s}\PY{o}{*}\PY{n}{R2}\PY{o}{*}\PY{n}{C2}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{G}\PY{p}{,}\PY{n}{G}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+              \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R1}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R2}\PY{o}{\PYZhy{}}\PY{n}{s}\PY{o}{*}\PY{n}{C1}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R2}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{s}\PY{o}{*}\PY{n}{C1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+    
+    \PY{n}{b}\PY{o}{=}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{Vi}\PY{o}{/}\PY{n}{R1}\PY{p}{]}\PY{p}{)}
+    
+    \PY{n}{V}\PY{o}{=}\PY{n}{A}\PY{o}{.}\PY{n}{inv}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n}{b}
+    \PY{k}{return} \PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{V}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    A helper function to graph the bode plots of an arbitrary sympy
+expression in \(s\) is written below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{bodePlot}\PY{p}{(}\PY{n}{H\PYZus{}s}\PY{p}{,}\PY{n}{w\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}\PY{p}{,}\PY{n}{points}\PY{o}{=}\PY{l+m+mi}{800}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Plot the magnitude and phase of H\PYZus{}s over the given range of frequencies.\PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{n}{w} \PY{o}{=} \PY{n}{logspace}\PY{p}{(}\PY{o}{*}\PY{n}{w\PYZus{}range}\PY{p}{,}\PY{n}{points}\PY{p}{)}
+    \PY{n}{h\PYZus{}s} \PY{o}{=} \PY{n}{lambdify}\PY{p}{(}\PY{n}{s}\PY{p}{,}\PY{n}{H\PYZus{}s}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{numpy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{H\PYZus{}jw} \PY{o}{=} \PY{n}{h\PYZus{}s}\PY{p}{(}\PY{l+m+mi}{1}\PY{n}{j}\PY{o}{*}\PY{n}{w}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} find mag and phase}
+    \PY{n}{mag} \PY{o}{=} \PY{l+m+mi}{20}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{log10}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{abs}\PY{p}{(}\PY{n}{H\PYZus{}jw}\PY{p}{)}\PY{p}{)}
+    \PY{n}{phase} \PY{o}{=} \PY{n}{angle}\PY{p}{(}\PY{n}{H\PYZus{}jw}\PY{p}{,}\PY{n}{deg} \PY{o}{=} \PY{k+kc}{True}\PY{p}{)}
+    
+    \PY{n}{eqn} \PY{o}{=} \PY{n}{Eq}\PY{p}{(}\PY{n}{H}\PY{p}{,}\PY{n}{simplify}\PY{p}{(}\PY{n}{H\PYZus{}s}\PY{p}{)}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{eqn}\PY{p}{)}
+    
+    \PY{n}{fig}\PY{p}{,}\PY{n}{axes} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax1}\PY{p}{,}\PY{n}{ax2} \PY{o}{=} \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+    
+    \PY{c+c1}{\PYZsh{} mag plot}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xscale}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Magntiude in dB}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{omega\PYZdl{} in rad/s}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{mag}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude of \PYZdl{}H(j }\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{omega)\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} phase plot}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Phase in degrees}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZbs{}}\PY{l+s+s1}{omega\PYZdl{} in rad/s}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xscale}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{log}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{phase}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase of \PYZdl{}H(j }\PY{l+s+s2}{\PYZbs{}}\PY{l+s+s2}{omega)\PYZdl{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    
+    \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The bode plots of the low pass filter transfer function, along with the
+analytical expression of the transfer function are shown below:
+
+	
+
+	
+
+    $$H(s) = \frac{0.0001586}{2.0 \cdot 10^{-14} s^{2} + 4.414 \cdot 10^{-9} s + 0.0002}$$
+
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_10_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe that the gain rolls off at \(-40\) dB per decade after the
+cutoff frequency of around \(10^5\) rad/s. The phase also changes
+directly from an initial value of \(180\) degrees to a final value of
+\(0\) degrees. This means that the filter is a second order filter.
+Since the phase starts of at \(0\) degrees, this filter is a
+non-inverting low pass filter. Also note that the DC gain is
+approximately \(0.793\).
+
+	
+
+	
+		
+    Let us analyze the system in terms of its quality factor.
+
+	
+
+	
+		
+    A function to convert a rational polynomial sympy expression into a
+tuple of numerator and denominator coefficients is written below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{symToTransferFn}\PY{p}{(}\PY{n}{Y\PYZus{}s}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+\PY{l+s+sd}{    Convert a sympy rational polynomial into one that can be used for scipy.signal.lti.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    Returns a tuple (num,den) which contains the coefficients of s of}
+\PY{l+s+sd}{    the numerator and denominator polynomials.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{c+c1}{\PYZsh{} get the polynomial coefficients after simplification}
+    \PY{n}{Y\PYZus{}ss} \PY{o}{=} \PY{n}{expand}\PY{p}{(}\PY{n}{simplify}\PY{p}{(}\PY{n}{Y\PYZus{}s}\PY{p}{)}\PY{p}{)}
+    \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o}{=} \PY{n}{fraction}\PY{p}{(}\PY{n}{Y\PYZus{}ss}\PY{p}{)}
+    \PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o}{=} \PY{n}{Poly}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{n}{s}\PY{p}{)}\PY{p}{,} \PY{n}{Poly}\PY{p}{(}\PY{n}{d}\PY{p}{,}\PY{n}{s}\PY{p}{)}
+    \PY{n}{num}\PY{p}{,}\PY{n}{den} \PY{o}{=} \PY{n}{n}\PY{o}{.}\PY{n}{all\PYZus{}coeffs}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{n}{d}\PY{o}{.}\PY{n}{all\PYZus{}coeffs}\PY{p}{(}\PY{p}{)}
+    \PY{n}{num}\PY{p}{,}\PY{n}{den} \PY{o}{=} \PY{p}{[}\PY{n+nb}{float}\PY{p}{(}\PY{n}{f}\PY{p}{)} \PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{num}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n+nb}{float}\PY{p}{(}\PY{n}{f}\PY{p}{)} \PY{k}{for} \PY{n}{f} \PY{o+ow}{in} \PY{n}{den}\PY{p}{]}
+
+    \PY{k}{return} \PY{n}{num}\PY{p}{,}\PY{n}{den}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    A function to find the Q factor of a second order system is written
+below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{findQ}\PY{p}{(}\PY{n}{H\PYZus{}s}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Find the quality factor of the input transfer function assuming it is second order.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{nl}\PY{p}{,}\PY{n}{dl} \PY{o}{=} \PY{n}{symToTransferFn}\PY{p}{(}\PY{n}{H\PYZus{}s}\PY{p}{)}
+    \PY{n}{syst} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lti}\PY{p}{(}\PY{n}{nl}\PY{p}{,}\PY{n}{dl}\PY{p}{)}
+    \PY{n}{p1}\PY{p}{,}\PY{n}{p2} \PY{o}{=} \PY{n}{syst}\PY{o}{.}\PY{n}{poles}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,} \PY{n}{syst}\PY{o}{.}\PY{n}{poles}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{sqrt}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{p1}\PY{o}{*}\PY{n}{p2}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{p1}\PY{o}{+}\PY{n}{p2}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Q factor of low pass filter: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{findQ}\PY{p}{(}\PY{n}{lowpass}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Q factor of low pass filter: 0.4531
+
+    \end{Verbatim}
+
+	
+		
+    With a Q factor of approximately \(0.45\) which is quite close to half,
+we can conclude that the filter is almost critically damped. This means
+that it has a very fast response time as the transients in its output
+die off as fast as possible.
+
+	
+
+	
+		
+    \section{High pass filter circuit}\label{high-pass-filter-circuit}
+
+We now repeat the process but for the high pass filter circuit given as
+the last figure in the assignment question pdf. Note that the signs of
+the gain block are incorrectly written in the question pdf, so they are
+switched in the subsequent analysis. The feedback path through the two
+resistors \((G-1)R\) and \(R\) connects to the negative terminal of the
+gain block. To solve the circuit, we combine the node equations at nodes
+\(V_1\), \(V_p\) and \(V_n\) along with the output equation of the
+differential gain block into one matrix equation below:
+
+	
+
+	
+
+    $$\left[\begin{matrix}0 & -1 & 0 & \frac{1}{G}\\\frac{C_{2} R_{3} s}{C_{2} R_{3} s + 1} & 0 & -1 & 0\\0 & G & - G & 1\\- C_{1} s - C_{2} s - \frac{1}{R_{3}} & \frac{1}{R_{3}} & 0 & \frac{1}{R_{1}}\end{matrix}\right] \left[\begin{matrix}V_{1}\\V_{n}\\V_{p}\\V_{o}\end{matrix}\right] = \left[\begin{matrix}0\\0\\0\\- C_{1} V_{i} s\end{matrix}\right]$$
+
+    
+	
+		
+    We now define a function to analytically solve this equation in sympy:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{}G1 = symbols(\PYZsq{}G1\PYZsq{})}
+\PY{k}{def} \PY{n+nf}{highpass}\PY{p}{(}\PY{n}{R1}\PY{o}{=}\PY{l+m+mf}{10e3}\PY{p}{,}\PY{n}{R3}\PY{o}{=}\PY{l+m+mf}{10e3}\PY{p}{,}\PY{n}{C1}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}9}\PY{p}{,}\PY{n}{C2}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}9}\PY{p}{,}\PY{n}{G}\PY{o}{=}\PY{l+m+mf}{1.586}\PY{p}{,}\PY{n}{Vi}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Solve the given highpass filter circuit for a given input Vi.\PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{n}{A}\PY{o}{=}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{G}\PY{p}{]}\PY{p}{,}
+        \PY{p}{[}\PY{n}{s}\PY{o}{*}\PY{n}{C2}\PY{o}{*}\PY{n}{R3}\PY{o}{/}\PY{p}{(}\PY{n}{s}\PY{o}{*}\PY{n}{C2}\PY{o}{*}\PY{n}{R3}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}
+        \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{G}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{G}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}
+        \PY{p}{[}\PY{o}{\PYZhy{}}\PY{n}{s}\PY{o}{*}\PY{n}{C2}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R3}\PY{o}{\PYZhy{}}\PY{n}{s}\PY{o}{*}\PY{n}{C1}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R3}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R1}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+
+    \PY{n}{b}\PY{o}{=}\PY{n}{Matrix}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{Vi}\PY{o}{*}\PY{n}{s}\PY{o}{*}\PY{n}{C1}\PY{p}{]}\PY{p}{)}
+
+    \PY{n}{V}\PY{o}{=}\PY{n}{A}\PY{o}{.}\PY{n}{inv}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n}{b}
+    \PY{c+c1}{\PYZsh{}V\PYZus{}lim = [limit(v,G1,oo) for v in V]}
+    \PY{k}{return} \PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{V}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The bode plots of the transfer function and its analytical expression
+are shown below:
+
+	
+
+	
+
+    $$H(s) = \frac{1.586 \cdot 10^{-14} s^{2}}{4.0 \cdot 10^{-14} s^{2} + 3.414 \cdot 10^{-9} s + 0.0002}$$
+
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_24_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe from the gain plot that the gain rolls off at \(+40\) dB per
+decade before the cutoff frequency of around \(10^5\) rad/s. This means
+that it is second order high pass filter. Since the phase at very high
+frequencies is approximately \(0\) degrees, this circuit is a
+non-inverting high pass filter.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Q factor of high pass filter: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{findQ}\PY{p}{(}\PY{n}{highpass}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Q factor of high pass filter: 0.8285
+
+    \end{Verbatim}
+
+	
+		
+    With a Q factor of approximately \(0.82\) which is quite close to
+\(\frac{1}{\sqrt 2} \approx 0.707\), we can conclude that the filter is
+close to being maximally flat. This means that it has as flat a pass
+band as possible after the gain roll off which occurs before the cutoff
+frequency.
+
+	
+
+	
+		
+    \section{Responses to inputs}\label{responses-to-inputs}
+
+We find the responses of the above two filter circuits to various inputs
+by converting the sympy expressions to numpy functions using
+\textbf{lambdify}. We then use the signals toolbox to find the response
+in the time domain.
+
+	
+
+	
+		
+    A function to find the causal inverse laplace transform of a sympy
+expression using \textbf{scipy.signal.impulse} is written below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{inverseLaplace}\PY{p}{(}\PY{n}{Y\PYZus{}s}\PY{p}{,}\PY{n}{t}\PY{o}{=}\PY{k+kc}{None}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+\PY{l+s+sd}{    Finds the inverse laplace transform of a sympy expression using sp.impulse. }
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{c+c1}{\PYZsh{} load the step response as a system in scipy.signal}
+    \PY{n}{num}\PY{p}{,}\PY{n}{den} \PY{o}{=} \PY{n}{symToTransferFn}\PY{p}{(}\PY{n}{Y\PYZus{}s}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} evaluate in time domain}
+    \PY{n}{t}\PY{p}{,}\PY{n}{y} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{impulse}\PY{p}{(}\PY{p}{(}\PY{n}{num}\PY{p}{,}\PY{n}{den}\PY{p}{)}\PY{p}{,}\PY{n}{T}\PY{o}{=}\PY{n}{t}\PY{p}{)}
+    \PY{k}{return} \PY{n}{t}\PY{p}{,}\PY{n}{y}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    A function to plot the time domain responses of the two filter circuits
+to an arbitrary input specified in either the Laplace domain or the time
+domain is written below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{plotFilterOutputs}\PY{p}{(}\PY{n}{laplace\PYZus{}in}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{time\PYZus{}domain\PYZus{}fn}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} 
+                      \PY{n}{lp\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{1e\PYZhy{}3}\PY{p}{)}\PY{p}{,} \PY{n}{hp\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{1e\PYZhy{}3}\PY{p}{)}\PY{p}{,} \PY{n}{points}\PY{o}{=}\PY{l+m+mf}{1e3}\PY{p}{,}
+                     \PY{n}{input\PYZus{}name}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Input}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}}
+\PY{l+s+sd}{    Plot the time domain outputs of the two active filters to a given input in the }
+\PY{l+s+sd}{    laplace domain or the time domain.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{n}{t\PYZus{}lp} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{*}\PY{n}{lp\PYZus{}range}\PY{p}{,}\PY{n}{points}\PY{p}{)}
+    \PY{n}{t\PYZus{}hp} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{*}\PY{n}{hp\PYZus{}range}\PY{p}{,}\PY{n}{points}\PY{p}{)}
+
+    
+    \PY{k}{if} \PY{n}{laplace\PYZus{}in} \PY{o}{!=} \PY{k+kc}{None}\PY{p}{:}
+        
+        \PY{n}{A}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{V\PYZus{}lowpass} \PY{o}{=} \PY{n}{lowpass}\PY{p}{(}\PY{n}{Vi}\PY{o}{=}\PY{n}{laplace\PYZus{}in}\PY{p}{)}
+        \PY{n}{t\PYZus{}lp}\PY{p}{,}\PY{n}{y\PYZus{}lp} \PY{o}{=} \PY{n}{inverseLaplace}\PY{p}{(}\PY{n}{V\PYZus{}lowpass}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{t}\PY{o}{=}\PY{n}{t\PYZus{}lp}\PY{p}{)}
+        
+        
+        \PY{n}{A}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{V\PYZus{}highpass} \PY{o}{=} \PY{n}{highpass}\PY{p}{(}\PY{n}{Vi}\PY{o}{=}\PY{n}{laplace\PYZus{}in}\PY{p}{)}
+        \PY{n}{t\PYZus{}hp}\PY{p}{,}\PY{n}{y\PYZus{}hp} \PY{o}{=} \PY{n}{inverseLaplace}\PY{p}{(}\PY{n}{V\PYZus{}highpass}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}\PY{n}{t}\PY{o}{=}\PY{n}{t\PYZus{}hp}\PY{p}{)}
+        
+    \PY{k}{elif} \PY{n}{time\PYZus{}domain\PYZus{}fn} \PY{o}{!=} \PY{k+kc}{None}\PY{p}{:}
+        
+        \PY{n}{A}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{V\PYZus{}lowpass} \PY{o}{=} \PY{n}{lowpass}\PY{p}{(}\PY{p}{)}
+        \PY{n}{lowsys} \PY{o}{=} \PY{n}{symToTransferFn}\PY{p}{(}\PY{n}{V\PYZus{}lowpass}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{t\PYZus{}lp}\PY{p}{,}\PY{n}{y\PYZus{}lp}\PY{p}{,}\PY{n}{svec} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lsim}\PY{p}{(}\PY{n}{lowsys}\PY{p}{,} \PY{n}{time\PYZus{}domain\PYZus{}fn}\PY{p}{(}\PY{n}{t\PYZus{}lp}\PY{p}{)}\PY{p}{,} \PY{n}{t\PYZus{}lp}\PY{p}{)}
+        
+         
+        \PY{n}{A}\PY{p}{,}\PY{n}{b}\PY{p}{,}\PY{n}{V\PYZus{}highpass} \PY{o}{=} \PY{n}{highpass}\PY{p}{(}\PY{p}{)}
+        \PY{n}{highsys} \PY{o}{=} \PY{n}{symToTransferFn}\PY{p}{(}\PY{n}{V\PYZus{}highpass}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+        \PY{n}{t\PYZus{}hp}\PY{p}{,}\PY{n}{y\PYZus{}hp}\PY{p}{,}\PY{n}{svec} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lsim}\PY{p}{(}\PY{n}{highsys}\PY{p}{,} \PY{n}{time\PYZus{}domain\PYZus{}fn}\PY{p}{(}\PY{n}{t\PYZus{}hp}\PY{p}{)}\PY{p}{,} \PY{n}{t\PYZus{}hp}\PY{p}{)}
+    
+    \PY{k}{else}\PY{p}{:}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{No input given.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        
+     
+    \PY{n}{fig}\PY{p}{,}\PY{n}{axes} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax1}\PY{p}{,}\PY{n}{ax2} \PY{o}{=} \PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}\PY{n}{axes}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+    
+    \PY{c+c1}{\PYZsh{} low pass response plot}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}V\PYZus{}o\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}t\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t\PYZus{}lp}\PY{p}{,}\PY{n}{y\PYZus{}lp}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Response of low pass filter to }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{input\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} high pass response plot}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}V\PYZus{}o\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}t\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{t\PYZus{}hp}\PY{p}{,}\PY{n}{y\PYZus{}hp}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Response of high pass filter to }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{input\PYZus{}name}\PY{p}{)}\PY{p}{)}
+   
+    \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{t\PYZus{}lp}\PY{p}{,}\PY{n}{y\PYZus{}lp}\PY{p}{,} \PY{n}{t\PYZus{}hp}\PY{p}{,}\PY{n}{y\PYZus{}hp}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    \subsection{Step response}\label{step-response}
+
+We plot the outputs of the two systems to a unit step below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_34_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+Steady state value of low pass filter step response: 0.7930
+Steady state value of high pass filter step response: 0.0000
+
+    \end{Verbatim}
+
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  We observe that the low pass filter inverts the step and attenuates it
+  by a factor of \(0.793\). This is indeed what we expect as we noticed
+  earlier that the DC gain of the transfer function is indeed \(0.793\).
+  We observe a transient which decays quite fast, again as we expected
+  as the system is almost critically damped.
+\item
+  The transient of the high pass response is also similar. However, the
+  steady state response of the high pass filter to the step is \(0\).
+  This is because it only allows frequencies higher than the cutoff to
+  pass through attenuated. Since DC inputs have a frequency of \(0\), it
+  is completely filtered out. This is similar to what is done when two
+  systems are coupled for AC signals.
+\end{itemize}
+
+	
+
+	
+		
+    \subsection{Sum of low and high frequency
+sinusoids}\label{sum-of-low-and-high-frequency-sinusoids}
+
+We analyse the responses to the following input:
+
+\[v_i(t) = (\sin(2000 \pi t) + \cos(2 \times 10^6 \pi t))u(t)\]
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{vi1}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Sum of low frequency and high frequency sinusoids\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{u\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{*}\PY{p}{(}\PY{n}{t}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)}
+    \PY{k}{return} \PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{2000}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{+}\PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{l+m+mf}{2e6}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{pi}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{u\PYZus{}t}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The input waveform is plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_39_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We first plot the response of the low pass filter in a very short time
+range and the high pass filter in a very large time range.
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_41_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  These time ranges allow us to notice the heavily attenuated part of
+  the input better. We can see that an extremely low amplitude high
+  frequency sinusoid rides on top of a slow response in the output of
+  the low pass filter. This is because the low pass filter has heavily
+  attentuated the high frequency component.
+\item
+  Similaraly, in the high pass filter, a heavily attenuated low
+  frequency sinusoid modulates a high frequency sinusoid. This is
+  because the high pass filter highly attenuated the low frequency
+  component.
+\end{itemize}
+
+	
+
+	
+		
+    Let us plot the low pass filter response on a larger time scale and the
+high pass filter response on a smaller time scale:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_44_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  We observe that the low pass response more or less looks like a pure
+  sinusoid of the lower frequency with the high frequency completely
+  attenuated.
+\item
+  We observe that the high pass response also looks like a pure sinusoid
+  of the higher frequency with the low frequency completely attenuated.
+\end{itemize}
+
+	
+
+	
+		
+    \subsection{High frequency damped
+sinusoid}\label{high-frequency-damped-sinusoid}
+
+We analyse the outputs to a high frequency damped sinusoid given as:
+
+\[v_i(t) = \cos(10^7 t) e^{-3000t} u(t)\]
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{input\PYZus{}f}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{decay}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{l+m+mf}{1.5}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Exponentially decaying cosine function.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{u\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{*}\PY{p}{(}\PY{n}{t}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)}
+    \PY{k}{return} \PY{n}{np}\PY{o}{.}\PY{n}{cos}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{np}\PY{o}{.}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{decay}\PY{o}{*}\PY{n}{t}\PY{p}{)} \PY{o}{*} \PY{n}{u\PYZus{}t}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The input waveform is plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_49_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    The responses are plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_51_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  The low pass filter responds fast and attenuates the high frequency
+  sinusoid. The output decays as the input also decays.
+\item
+  The high pass filter responds by more or less letting the input pass
+  through as is, without any extra attenuation. So the output decays as
+  the input does.
+\end{itemize}
+
+	
+
+	
+		
+    \subsection{Low frequency damped
+sinusoid}\label{low-frequency-damped-sinusoid}
+
+We analyse the outputs to a high frequency damped sinusoid given as:
+
+\[v_i(t) = \cos(10^3 t) e^{-10t} u(t)\]
+
+	
+
+	
+		
+    The input waveform is plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_55_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    The responses are plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment8_files/Assignment8_57_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \section{Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  The low pass filter responds by letting the low frequency sinusoid
+  pass through without much additional attenuation. The output decays as
+  the input also decays.
+\item
+  The high pass filter responds by quickly attenuating the input. Notice
+  that the time scales show that the high pass filter response is orders
+  of magnitudes faster than the low pass response. This is because the
+  input frequency is below the cutoff frequency, so the output goes to
+  \(0\) very fast.
+\item
+  In conclusion, the sympy module has allowed us to analyse quite
+  complicated circuits by analytically solving their node equations. We
+  then interpreted the solutions by plotting time domain responses using
+  the signals toolbox. Thus, sympy combined with the scipy.signal module
+  is a very useful toolbox for analyzing complicated systems like the
+  active filters in this assignment.
+\end{itemize}
+
+	
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

@@ -1,0 +1,1306 @@
+% jupyter nbconvert --to pdf HW0.ipynb --template clean_report.tplx
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    
+    \title{EE2703 Applied Programming Lab - Assignment 7}            
+
+    
+    
+\author{
+  \textbf{Name}: Rajat Vadiraj Dwaraknath\\
+  \textbf{Roll Number}: EE16B033
+}
+
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+	
+
+	
+		
+    \section{Introduction}\label{introduction}
+
+In this assignment, we deal with Linear Time Invariant systems and their
+responses to certain inputs. We use the scipy.signal module to perform
+analysis of systems with rational polynomial transfer functions. We look
+at a coupled system of differential equations, and also a linear
+electrical circuit which behaves like a low-pass filter.
+
+	
+
+	
+
+	
+
+	
+
+	
+		
+    \section{Question 1}\label{question-1}
+
+We solve for the response by using the property that the Laplace
+transform of the output \(X(s)\) of a system with transfer function
+\(H(s)\) to an input with Laplace transform \(F(s)\) is given by:
+
+\[X(s) = H(s) F(s)\]
+
+We then use the sp.impulse function to find the inverse Laplace
+transform of the output over a certain range of times:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{import} \PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{signal} \PY{k}{as} \PY{n+nn}{sp}
+
+\PY{k}{def} \PY{n+nf}{F\PYZus{}s}\PY{p}{(}\PY{n}{freq}\PY{o}{=}\PY{l+m+mf}{1.5}\PY{p}{,}\PY{n}{decay}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Transfer function of the given system\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{n} \PY{o}{=} \PY{n}{poly1d}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{decay}\PY{p}{]}\PY{p}{)}
+    \PY{n}{d} \PY{o}{=} \PY{n}{n}\PY{o}{*}\PY{n}{n}\PY{o}{+}\PY{n}{freq}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}
+    \PY{k}{return} \PY{n}{n}\PY{p}{,}\PY{n}{d}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+	
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{F\PYZus{}s}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(poly1d([ 1. ,  0.5]), poly1d([ 1. ,  1. ,  2.5]))
+
+    \end{Verbatim}
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{secondOrderH}\PY{p}{(}\PY{n}{wn}\PY{o}{=}\PY{l+m+mf}{1.5}\PY{p}{,}\PY{n}{zeta}\PY{o}{=}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{gain}\PY{o}{=}\PY{l+m+mi}{1}\PY{o}{/}\PY{l+m+mf}{2.25}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}General second order all pole transfer function.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{n} \PY{o}{=} \PY{n}{poly1d}\PY{p}{(}\PY{p}{[}\PY{n}{wn}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{gain}\PY{p}{]}\PY{p}{)}
+    \PY{n}{d} \PY{o}{=} \PY{n}{poly1d}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{wn}\PY{o}{*}\PY{n}{zeta}\PY{p}{,}\PY{n}{wn}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+    \PY{k}{return} \PY{n}{n}\PY{p}{,}\PY{n}{d}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+	
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{secondOrderH}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+(poly1d([ 1.]), poly1d([ 1.  ,  0.  ,  2.25]))
+
+    \end{Verbatim}
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{solveProblem}\PY{p}{(}\PY{n}{decay}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Find the response to the given system to a decaying cosine.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{inN}\PY{p}{,} \PY{n}{inD} \PY{o}{=} \PY{n}{F\PYZus{}s}\PY{p}{(}\PY{n}{decay}\PY{o}{=}\PY{n}{decay}\PY{p}{)}
+    \PY{n}{HN}\PY{p}{,} \PY{n}{HD} \PY{o}{=} \PY{n}{secondOrderH}\PY{p}{(}\PY{p}{)}
+
+    \PY{n}{outN}\PY{p}{,}\PY{n}{outD} \PY{o}{=} \PY{n}{inN}\PY{o}{*}\PY{n}{HN}\PY{p}{,} \PY{n}{inD}\PY{o}{*}\PY{n}{HD}
+
+    \PY{n}{out\PYZus{}s} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lti}\PY{p}{(}\PY{n}{outN}\PY{o}{.}\PY{n}{coeffs}\PY{p}{,} \PY{n}{outD}\PY{o}{.}\PY{n}{coeffs}\PY{p}{)}
+
+    \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{50}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
+    \PY{k}{return} \PY{n}{sp}\PY{o}{.}\PY{n}{impulse}\PY{p}{(}\PY{n}{out\PYZus{}s}\PY{p}{,}\PY{k+kc}{None}\PY{p}{,}\PY{n}{t}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We plot the output for an input with a decay constant of \(0.5\):
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe that the output of the system in steady state is a a sinusoid
+with the same frequency as the input, but with no decay. This is because
+the natural frequency of the system is equal to the frequency of the
+input.
+
+	
+
+	
+		
+    \section{Question 2}\label{question-2}
+
+We repeat the plot with a decay constant of \(0.05\):
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe that the steady state response follows the same trend as the
+previous case, except that it has a much larger amplitude. This is
+because the input excited the system for a longer duration due to its
+smaller decay constant. This resulted in a larger buildup of output due
+to resonance. We can see that, during the buildup of the output, the
+amplitude grows linearly. This is characteristic of resonance in a
+second order system. This will be made clear by exciting the system with
+slightly different frequencies:
+
+	
+
+	
+		
+    \section{Problem 3}\label{problem-3}
+
+We find the response to inputs with slightly different frequencies
+around \(1.5\).
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{input\PYZus{}f}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{decay}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{l+m+mf}{1.5}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Exponentially decaying cosine function.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{u\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{*}\PY{p}{(}\PY{n}{t}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)}
+    \PY{k}{return} \PY{n}{cos}\PY{p}{(}\PY{n}{freq}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{decay}\PY{o}{*}\PY{n}{t}\PY{p}{)} \PY{o}{*} \PY{n}{u\PYZus{}t}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} get transfer function}
+\PY{n}{system} \PY{o}{=} \PY{n}{secondOrderH}\PY{p}{(}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} time range}
+\PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{70}\PY{p}{,}\PY{l+m+mi}{1000}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} list of outputs}
+\PY{n}{outs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+\PY{c+c1}{\PYZsh{} list of frequencies to iterate over}
+\PY{n}{fs} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mf}{1.4}\PY{p}{,}\PY{l+m+mf}{1.6}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{)}
+
+
+\PY{k}{for} \PY{n}{freq} \PY{o+ow}{in} \PY{n}{fs}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} solve}
+    \PY{n}{t}\PY{p}{,}\PY{n}{y}\PY{p}{,}\PY{n}{svec} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lsim}\PY{p}{(}\PY{n}{system}\PY{p}{,}\PY{n}{input\PYZus{}f}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{decay}\PY{o}{=}\PY{l+m+mf}{0.05}\PY{p}{,}\PY{n}{freq}\PY{o}{=}\PY{n}{freq}\PY{p}{)}\PY{p}{,}\PY{n}{t}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} store}
+    \PY{n}{outs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The response is plotted for frequencies around \(1.5\):
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_21_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe that an input with frequency of exactly \(1.5\) reaches the
+largest steady state amplitude. This is because of the aforementioned
+resonance. Nearby frequencies are not tuned to the natural response of
+the system, so their amplitudes die down after the initial rise before
+reaching a steady state. This can also be understood by looking at the
+magnitude of the transfer function at these frequencies. Let us find the
+Bode plots of this transfer function:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{w}\PY{p}{,}\PY{n}{S}\PY{p}{,}\PY{n}{phi}\PY{o}{=}\PY{n}{sp}\PY{o}{.}\PY{n}{lti}\PY{p}{(}\PY{o}{*}\PY{n}{system}\PY{p}{)}\PY{o}{.}\PY{n}{bode}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_24_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    From the above Bode plots, it is clear that this system is a second
+order system with complex conjugate poles. The quality factor of this
+system is actually infinte, but is not visible in the graph of the
+magnitude due to lack of resolution. It is much more evident in the
+phase plot, in which it drops from 0 degrees to -180 degrees like a
+step, which is indicative of infinite Q. This infinte quality means that
+the magnitude decays sharply around the resonant frequency of \(1.5\).
+This is why we observe a much lesser amplitude in output for frequencies
+which are slightly detuned from the resonant frequency.
+
+	
+
+	
+		
+    \section{Question 4}\label{question-4}
+
+There are two ways to approach a set of coupled differential equations.
+One way is to solve them by eliminating one equation by substitution.
+Let us first use this approach. The given equations are:
+
+\[\ddot{x} + x -y = 0\] \[\ddot{y} + 2(y -x) = 0\]
+
+We substitute for \(y\) in the second equation using the first and
+obtain the following:
+
+\[x^{(4)} + 3x^{(2)} = 0\]
+
+where the superscript in parenthesis denotes the order of the
+derivative.
+
+We also need to solve for the initial conditions. We obtain the
+following set of initial conditions on only derivatives of \(x\):
+
+\[x(0) = 1\] \[x^{(1)}(0) = 0\] \[x^{(2)}(0) = -1\] \[x^{(3)}(0) = 0\]
+
+Using these conditions, we take the Laplace transform of the above
+equation and solve for \(X(s)\) to get:
+
+\[X(s) = \frac{s^2+2}{s^3+3s}\]
+
+Substituting back, we find for \(Y(s)\):
+
+\[Y(s) = \frac{2}{s^3+3s}\]
+
+We can now invert these Laplace transforms to find the solutions in the
+time domain. However, a more interesting approach to the problem would
+be to decouple the set of differential equations. This is done by
+finding the Jordan decomposition of the coefficient matrix. We obtain
+the following change of variables for decoupling:
+
+\[u = x-y\] \[v = 2x+y\]
+
+The system of equations reduces to two independent equations:
+
+\[\ddot{u} + 3u = 0\] \[\ddot{v} = 0\]
+
+With the following initial conditions:
+
+\[u(0) = 1\] \[\dot{u}(0) = 0\] \[v(0) = 2\] \[\dot{v}(0) = 0\]
+
+These can be easily solved independently, as they are just second order
+systems as opposed to a fourth order system. The solutions obtained for
+\(u\) and \(v\) can then be transformed back to solutions for \(x\) and
+\(y\) using the change of variables described above. We obtain the same
+results for \(X(s)\) and \(Y(s)\) using this method as before.
+
+We now invert these Laplace transforms to obtain the solutions in time
+domain:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{X\PYZus{}s} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lti}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+
+\PY{n}{Y\PYZus{}s} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lti}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{,}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+
+\PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{20}\PY{p}{,}\PY{l+m+mf}{1e3}\PY{p}{)}
+
+\PY{n}{t}\PY{p}{,} \PY{n}{x} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{impulse}\PY{p}{(}\PY{n}{X\PYZus{}s}\PY{p}{,}\PY{k+kc}{None}\PY{p}{,}\PY{n}{t}\PY{p}{)}
+\PY{n}{t}\PY{p}{,} \PY{n}{y} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{impulse}\PY{p}{(}\PY{n}{Y\PYZus{}s}\PY{p}{,}\PY{k+kc}{None}\PY{p}{,}\PY{n}{t}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The solutions are plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_29_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  We observe that the solutions are sinusoidal with a certain DC offset.
+\item
+  This is evident from the expressions of the Laplace Transforms of the
+  solutions as the denominator contains a factor of \(s\).
+\item
+  We observe that these two DC offsets are the same for both \(x\) and
+  \(y\).
+\item
+  This can be confirmed by noticing that the differential equation in
+  \(u = x-y\) has no forcing function, so the DC offset of \(u\) must be
+  \(0\). Therefore, \(x\) and \(y\) must have the same DC offset.
+\item
+  They also oscillate with the same frequencies because the coefficient
+  of the second derivative term is the same in both differential
+  equations.
+\item
+  This system of equations models two masses attached to the two ends of
+  an ideal spring with no damping. \(x\) and \(y\) are the positions of
+  the masses in a reference frame moving at the same speed as the centre
+  of mass, but offset from the centre of mass by some amount.
+\end{itemize}
+
+	
+
+	
+		
+    \section{Problem 5}\label{problem-5}
+
+We find the transfer function by finding the natural frequency and the
+damping constant of the circuit.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} Find the transfer function of the given circuit}
+\PY{n}{R} \PY{o}{=} \PY{l+m+mi}{100}
+\PY{n}{L} \PY{o}{=} \PY{l+m+mf}{1e\PYZhy{}6}
+\PY{n}{C} \PY{o}{=} \PY{l+m+mf}{1e\PYZhy{}6}
+
+\PY{n}{wn} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{sqrt}\PY{p}{(}\PY{n}{L}\PY{o}{*}\PY{n}{C}\PY{p}{)} \PY{c+c1}{\PYZsh{} natural frequency}
+\PY{n}{Q} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{R} \PY{o}{*} \PY{n}{sqrt}\PY{p}{(}\PY{n}{L}\PY{o}{/}\PY{n}{C}\PY{p}{)} \PY{c+c1}{\PYZsh{} quality factor}
+\PY{n}{zeta} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{Q}\PY{p}{)} \PY{c+c1}{\PYZsh{} damping constant}
+
+\PY{c+c1}{\PYZsh{} transfer function}
+\PY{n}{n}\PY{p}{,}\PY{n}{d} \PY{o}{=} \PY{n}{secondOrderH}\PY{p}{(}\PY{n}{gain}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{,}\PY{n}{wn}\PY{o}{=}\PY{n}{wn}\PY{p}{,}\PY{n}{zeta}\PY{o}{=}\PY{n}{zeta}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} make system}
+\PY{n}{H} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lti}\PY{p}{(}\PY{n}{n}\PY{p}{,}\PY{n}{d}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} get bode plots}
+\PY{n}{w}\PY{p}{,}\PY{n}{S}\PY{p}{,}\PY{n}{phi}\PY{o}{=}\PY{n}{H}\PY{o}{.}\PY{n}{bode}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We plot the magnitude and phase of the transfer function on log plots:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_34_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_34_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\item
+  It is clear that there are two poles, one at around \(10^4\) rad/s and
+  another at around \(10^8\) rad/s.
+\item
+  Since the poles are not coincident, this means that the system is
+  overdamped, with a quality factor \(<1\). The quality factor can be
+  estimated using \[Q = \frac{\omega_{p1}}{\omega_n}\] where
+  \(\omega_{p1}\) is the first pole. We get \(Q \approx 0.01\)
+\item
+  Since the system has no zeros, it acts as an all-pole low pass filter.
+\item
+  Since the two poles are quite far apart, we can approximate the 3-dB
+  bandwidth of the filter to be at the first pole, i.e., \(10^4\) rad/s.
+\item
+  We therefore expect the system to pass frequencies lower than \(10^4\)
+  rad/s and attenuate higher frequencies. We see this effect in the next
+  part.
+\end{itemize}
+
+	
+
+	
+		
+    \section{Question 6}\label{question-6}
+
+We excite the system in Question 5 with two sinusoids, one whose
+frequency is below the 3-dB bandwith and one whose frequency is higher.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{input\PYZus{}2}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{w1}\PY{o}{=}\PY{l+m+mf}{1e3}\PY{p}{,}\PY{n}{w2}\PY{o}{=}\PY{l+m+mf}{1e6}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Two cosines of different frequencies\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{u\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{*}\PY{p}{(}\PY{n}{t}\PY{o}{\PYZgt{}}\PY{l+m+mi}{0}\PY{p}{)}
+    \PY{k}{return} \PY{p}{(}\PY{n}{cos}\PY{p}{(}\PY{n}{w1}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{n}{cos}\PY{p}{(}\PY{n}{w2}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{p}{)} \PY{o}{*} \PY{n}{u\PYZus{}t}
+
+\PY{c+c1}{\PYZsh{} early response}
+\PY{n}{t1}\PY{o}{=}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{30e\PYZhy{}6}\PY{p}{,}\PY{l+m+mf}{1e3}\PY{p}{)}
+\PY{n}{t1}\PY{p}{,}\PY{n}{y1}\PY{p}{,}\PY{n}{svec} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lsim}\PY{p}{(}\PY{n}{H}\PY{p}{,}\PY{n}{input\PYZus{}2}\PY{p}{(}\PY{n}{t1}\PY{p}{)}\PY{p}{,}\PY{n}{t1}\PY{p}{)}
+
+\PY{c+c1}{\PYZsh{} steady state response}
+\PY{n}{t2}\PY{o}{=}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mf}{10e\PYZhy{}3}\PY{p}{,}\PY{l+m+mf}{1e3}\PY{p}{)}
+\PY{n}{t2}\PY{p}{,}\PY{n}{y2}\PY{p}{,}\PY{n}{svec} \PY{o}{=} \PY{n}{sp}\PY{o}{.}\PY{n}{lsim}\PY{p}{(}\PY{n}{H}\PY{p}{,}\PY{n}{input\PYZus{}2}\PY{p}{(}\PY{n}{t2}\PY{p}{)}\PY{p}{,}\PY{n}{t2}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We plot the time domain response in two parts, one for the first 30
+\(\mu s\), to observe transient effects, and one for \(10\) msec, to
+observe the steady state response.
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_39_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment7_files/Assignment7_40_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \section{Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  The transient response of the system is rapidly increasing. This is
+  because the system has to charge up to match the input amplitude. This
+  results in a phase difference between the input and the output. This
+  can also be interpreted as a delay between the input and the output
+  signals.
+\item
+  The response can be broken up into a low frequency component and a
+  high frequency one, after the transient effect has died down.
+\item
+  The high frequency component is extremely attenuated (by -40 dB
+  infact), so in the 10 msec plot, it is almost not visible.
+\item
+  The low frequency component passes through almost unaffected with an
+  amplitude of slightly less than 1. This is because its frequency is
+  below the 3-dB bandwidth of the system.
+\item
+  Thus, it is clear that the system behaves like a low-pass filter.
+\end{itemize}
+
+	
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
