@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.27)  31 MAR 2018 21:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.10.27)  1 APR 2018 12:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -784,9 +784,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 995--996
  []
 
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1054.
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 1053.
 
-Underfull \hbox (badness 1237) in paragraph at lines 1061--1063
+Underfull \hbox (badness 1237) in paragraph at lines 1060--1062
 []\T1/ppl/m/n/10.95 A func-tion to find the causal in-verse laplace trans-form 
 of a sympy ex-pres-sion us-ing
  []
@@ -797,125 +797,131 @@ File: Assignment8_files/Assignment8_34_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_34_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_34_0.png used on input l
-ine 1457.
+ine 1456.
 (pdftex.def)             Requested size: 1092.07735pt x 413.54398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1459--1460
+Underfull \hbox (badness 10000) in paragraph at lines 1458--1459
 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 1472
+LaTeX Font Info:    Try loading font information for TS1+ppl on input line 1473
 .
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 ) [7 <./Assignment8_files/Assignment8_34_0.png>]
-<Assignment8_files/Assignment8_39_0.png, id=88, 1107.13625pt x 413.545pt>
+<Assignment8_files/Assignment8_39_0.png, id=87, 1107.13625pt x 413.545pt>
 File: Assignment8_files/Assignment8_39_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_39_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_39_0.png used on input l
-ine 1549.
+ine 1572.
 (pdftex.def)             Requested size: 1107.13354pt x 413.54398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1551--1552
+Underfull \hbox (badness 10000) in paragraph at lines 1574--1575
 
  []
 
-<Assignment8_files/Assignment8_41_0.png, id=89, 1127.21124pt x 413.545pt>
+<Assignment8_files/Assignment8_41_0.png, id=88, 1127.21124pt x 413.545pt>
 File: Assignment8_files/Assignment8_41_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_41_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_41_0.png used on input l
-ine 1563.
+ine 1586.
 (pdftex.def)             Requested size: 1127.2085pt x 413.54398pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
+ [8 <./Assignment8_files/Assignment8_39_0.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1588--1589
 
  []
 
-<Assignment8_files/Assignment8_44_0.png, id=90, 1114.1625pt x 413.545pt>
+<Assignment8_files/Assignment8_44_0.png, id=95, 1114.1625pt x 413.545pt>
 File: Assignment8_files/Assignment8_44_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_44_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_44_0.png used on input l
-ine 1596.
+ine 1619.
 (pdftex.def)             Requested size: 1114.15979pt x 413.54398pt.
- [8 <./Assignment8_files/Assignment8_39_0.png> <./Assignment8_files/Assignment8
-_41_0.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1598--1599
+
+Underfull \hbox (badness 10000) in paragraph at lines 1621--1622
 
  []
 
-<Assignment8_files/Assignment8_49_0.png, id=97, 1107.13625pt x 413.545pt>
+[9 <./Assignment8_files/Assignment8_41_0.png> <./Assignment8_files/Assignment8_
+44_0.png>]
+<Assignment8_files/Assignment8_49_0.png, id=102, 1107.13625pt x 413.545pt>
 File: Assignment8_files/Assignment8_49_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_49_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_49_0.png used on input l
-ine 1676.
+ine 1699.
 (pdftex.def)             Requested size: 1107.13354pt x 413.54398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1678--1679
+Underfull \hbox (badness 10000) in paragraph at lines 1701--1702
 
  []
 
-[9 <./Assignment8_files/Assignment8_44_0.png> <./Assignment8_files/Assignment8_
-49_0.png>]
-<Assignment8_files/Assignment8_51_0.png, id=104, 1139.25626pt x 436.63126pt>
+<Assignment8_files/Assignment8_51_0.png, id=103, 1139.25626pt x 436.63126pt>
 File: Assignment8_files/Assignment8_51_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_51_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_51_0.png used on input l
-ine 1689.
+ine 1712.
 (pdftex.def)             Requested size: 1139.25348pt x 436.63019pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1691--1692
+Underfull \hbox (badness 10000) in paragraph at lines 1714--1715
 
  []
 
-<Assignment8_files/Assignment8_55_0.png, id=105, 1099.10625pt x 413.545pt>
+[10 <./Assignment8_files/Assignment8_49_0.png> <./Assignment8_files/Assignment8
+_51_0.png>]
+<Assignment8_files/Assignment8_55_0.png, id=110, 1099.10625pt x 413.545pt>
 File: Assignment8_files/Assignment8_55_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_55_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_55_0.png used on input l
-ine 1728.
+ine 1751.
 (pdftex.def)             Requested size: 1099.10356pt x 413.54398pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1730--1731
+Underfull \hbox (badness 10000) in paragraph at lines 1753--1754
 
  []
 
-<Assignment8_files/Assignment8_57_0.png, id=106, 1106.1325pt x 436.63126pt>
+<Assignment8_files/Assignment8_57_0.png, id=111, 1106.1325pt x 436.63126pt>
 File: Assignment8_files/Assignment8_57_0.png Graphic file (type png)
 
 <use Assignment8_files/Assignment8_57_0.png>
 Package pdftex.def Info: Assignment8_files/Assignment8_57_0.png used on input l
-ine 1741.
+ine 1764.
 (pdftex.def)             Requested size: 1106.1298pt x 436.63019pt.
- [10 <./Assignment8_files/Assignment8_51_0.png> <./Assignment8_files/Assignment
-8_55_0.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1743--1744
+
+Underfull \hbox (badness 10000) in paragraph at lines 1766--1767
 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1777.
-[11 <./Assignment8_files/Assignment8_57_0.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1777.
+[11 <./Assignment8_files/Assignment8_55_0.png> <./Assignment8_files/Assignment8
+_57_0.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1800.
+ [12]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1800.
  (./Assignment8.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1777.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1777.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1800.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1800.
 
 Package rerunfilecheck Info: File `Assignment8.out' has not changed.
 (rerunfilecheck)             Checksum: 63836439951F56BEB6BBD1EA4B5BB130;571.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1777.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1800.
  ) 
 Here is how much of TeX's memory you used:
- 10980 strings out of 494953
- 165135 string characters out of 6180976
- 264366 words of memory out of 5000000
+ 10981 strings out of 494953
+ 165142 string characters out of 6180976
+ 265366 words of memory out of 5000000
  14013 multiletter control sequences out of 15000+600000
  36668 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,8n,38p,391b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,8n,38p,391b,463s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/rajat/.texmf-var/fonts/pk/ljfour/jknappen/ec/tcit1095.600pk>{/usr/sha
 re/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/rajat/.texmf-var/font
 s/pk/ljfour/jknappen/ec/ecit1095.600pk> </home/rajat/.texmf-var/fonts/pk/ljfour
@@ -927,10 +933,10 @@ usr/share/texlive/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/palatino/uplri8a.pfb>
-Output written on Assignment8.pdf (11 pages, 721130 bytes).
+Output written on Assignment8.pdf (12 pages, 719474 bytes).
 PDF statistics:
- 282 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
- 21 named destinations out of 1000 (max. 500000)
+ 286 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
  123 words of extra memory for PDF output out of 10000 (max. 10000000)
 

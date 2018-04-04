@@ -111,7 +111,7 @@ def highpass(R1=10e3,R3=10e3,C1=1e-9,C2=1e-9,G=1.586,Vi=1):
     A=Matrix([[0,-1,0,1/G],
         [s*C2*R3/(s*C2*R3+1),0,-1,0],
         [0,G,-G,1],
-        [-s*C2-1/R3-s*C1,1/R3,0,1/R1]])
+        [-s*C2-1/R1-s*C1,0,s*C2,1/R1]])
 
     b=Matrix([0,0,0,-Vi*s*C1])
 
@@ -195,7 +195,9 @@ def plotFilterOutputs(laplace_in=None, time_domain_fn=None,
 
 t_lp,y_lp, t_hp,y_hp = plotFilterOutputs(laplace_in=1/s,input_name="unit step")
 print("Steady state value of low pass filter step response: {:.4f}".format(y_lp[-1]))
-print("Steady state value of high pass filter step response: {:.4f}".format(y_hp[-1]))
+print("Steady state value of high pass filter step response: {:.4f}".format(abs(y_hp[-1])))
+print("Initial value of low pass filter step response: {:.4f}".format(y_lp[0]))
+print("Initial value of high pass filter step response: {:.4f}".format(y_hp[0]))
 
 def vi1(t):
     """Sum of low frequency and high frequency sinusoids"""
