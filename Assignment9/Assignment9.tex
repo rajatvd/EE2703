@@ -1,0 +1,1954 @@
+% jupyter nbconvert --to pdf HW0.ipynb --template clean_report.tplx
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    
+    \title{EE2703 Applied Programming Lab - Assignment 9}            
+
+    
+    
+\author{
+  \textbf{Name}: Rajat Vadiraj Dwaraknath\\
+  \textbf{Roll Number}: EE16B033
+}
+
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+	
+
+	
+		
+    \section{Introduction}\label{introduction}
+
+In this assignment, we analyse signals using the Fast Fourier transform,
+or the FFT for short. The FFT is a fast implementation of the Discrete
+Fourier transform(DFT). It runs in \(\mathcal{O}(n \log n)\) time
+complexity. We find the FFTs of various types of signals using the
+numpy.fft module. We also attempt to approximate the continuous time
+fourier transform of a gaussian by windowing and sampling in time
+domain, and then taking the DFT. We iteratively increase window size and
+number of samples until we obtain an estimate of required accuracy.
+
+	
+
+	
+
+	
+
+	
+		
+    \section{FFT and IFFT}\label{fft-and-ifft}
+
+	
+
+	
+		
+    We perform the FFT and then the IFFT on a random array to see how well
+the original signal can be reconstruced.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kn}{from} \PY{n+nn}{numpy}\PY{n+nn}{.}\PY{n+nn}{fft} \PY{k}{import} \PY{o}{*}
+\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{figure.figsize}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{18}\PY{p}{,}\PY{l+m+mi}{6}
+\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{font.size}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{18}
+\PY{n}{rcParams}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{text.usetex}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{k+kc}{True}
+\PY{n}{x}\PY{o}{=}\PY{n}{rand}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{)}
+\PY{n}{X}\PY{o}{=} \PY{n}{fft}\PY{p}{(}\PY{n}{x}\PY{p}{)}
+\PY{n}{y}\PY{o}{=} \PY{n}{ifft}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Original and reconstructed signal values:}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{c\PYZus{}}\PY{p}{[}\PY{n}{x}\PY{p}{,}\PY{n}{y}\PY{p}{]}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Max absolute error in reconstruction: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{x}\PY{o}{\PYZhy{}}\PY{n}{y}\PY{p}{)}\PY{o}{.}\PY{n}{max}\PY{p}{(}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Original and reconstructed signal values:
+[[ 0.12525382 +0.00000000e+00j  0.12525382 +0.00000000e+00j]
+ [ 0.79069516 +0.00000000e+00j  0.79069516 +3.38618023e-16j]
+ [ 0.46353347 +0.00000000e+00j  0.46353347 +9.55774994e-17j]
+ [ 0.08177623 +0.00000000e+00j  0.08177623 -1.71584784e-16j]
+ [ 0.53485467 +0.00000000e+00j  0.53485467 -4.41723755e-16j]
+ [ 0.09175224 +0.00000000e+00j  0.09175224 -1.80948529e-16j]
+ [ 0.11181523 +0.00000000e+00j  0.11181523 +2.11154472e-18j]
+ [ 0.59301897 +0.00000000e+00j  0.59301897 +1.22315953e-16j]
+ [ 0.11265585 +0.00000000e+00j  0.11265585 +1.09678038e-17j]
+ [ 0.01678895 +0.00000000e+00j  0.01678895 +2.24666244e-16j]]
+Max absolute error in reconstruction: 4.417237552752643e-16
+
+    \end{Verbatim}
+
+	
+		
+    An error of order \(10^{-15}\) is present due to numerical inaccuracies
+in representations. We also observe that the reconstructed signal has
+some very small imaginary parts. Otherwise, we can see that the
+reconstruction is almost perfect.
+
+	
+
+	
+		
+    \section{Spectrum of sin(5t)}\label{spectrum-of-sin5t}
+
+	
+
+	
+		
+    First, the examples given in the assignment are worked through:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    To resolve the issues above like frequency scale and magnitude scale, a
+helper function to plot the magnitude and phase of the DFT of an
+arbitrary continuous function is written below. The function is first
+sampled to obtain the discrete periodic sequence whose DFT is then
+found.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{plotFFT}\PY{p}{(}\PY{n}{func}\PY{p}{,}\PY{n}{t\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{p}{)}\PY{p}{,}\PY{n}{points}\PY{o}{=}\PY{l+m+mi}{128}\PY{p}{,}\PY{n}{tol}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}5}\PY{p}{,}
+            \PY{n}{func\PYZus{}name}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{unwrap\PYZus{}}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,}\PY{n}{wlim}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}\PY{n}{scatter\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,}
+           \PY{n}{iff}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Plot the FFT of the given continuous function.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    func : the continuous function}
+\PY{l+s+sd}{    t\PYZus{}range : the time range over which to sample the function,}
+\PY{l+s+sd}{        exclusive of the last value}
+\PY{l+s+sd}{    points : number of samples}
+\PY{l+s+sd}{    tol : tolerance for setting phase to 0 when magnitude is low}
+\PY{l+s+sd}{    func\PYZus{}name : name of the function}
+\PY{l+s+sd}{    unwrap : whether to unwrap phase}
+\PY{l+s+sd}{    wlim : range of frequencies for the plots, give None for all frequencies}
+\PY{l+s+sd}{    scatter\PYZus{}size : size of scatter plot points}
+\PY{l+s+sd}{    iff: whether to do an ifftshift on the time range}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    Returns:}
+\PY{l+s+sd}{    numpy array containing the FFT, after being shifted and normalized.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{c+c1}{\PYZsh{} default name for function}
+    \PY{k}{if} \PY{n}{func\PYZus{}name} \PY{o}{==} \PY{k+kc}{None}\PY{p}{:}
+        \PY{n}{func\PYZus{}name} \PY{o}{=} \PY{n}{func}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
+    
+    \PY{c+c1}{\PYZsh{} time points to sample}
+    \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{*}\PY{n}{t\PYZus{}range}\PY{p}{,}\PY{n}{points}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{n}{T} \PY{o}{=} \PY{n}{t\PYZus{}range}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{t\PYZus{}range}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{samplingfreq} \PY{o}{=} \PY{n}{points}\PY{o}{/}\PY{n}{T}
+    
+    \PY{k}{if} \PY{n}{iff}\PY{p}{:}
+        \PY{n}{t} \PY{o}{=} \PY{n}{ifftshift}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} corresponding frequencies of the sampled signal}
+    \PY{n}{w} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{pi}\PY{p}{,}\PY{n}{pi}\PY{p}{,}\PY{n}{points}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{n}{w} \PY{o}{=} \PY{n}{w}\PY{o}{*}\PY{n}{samplingfreq}
+    
+    \PY{c+c1}{\PYZsh{} find fft}
+    \PY{n}{y} \PY{o}{=} \PY{n}{func}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+    \PY{n}{Y} \PY{o}{=}  \PY{n}{fftshift}\PY{p}{(} \PY{n}{fft}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{points}
+    
+    \PY{c+c1}{\PYZsh{} get phase}
+    \PY{n}{ph} \PY{o}{=} \PY{n}{angle}\PY{p}{(}\PY{n}{Y}\PY{p}{)}
+    \PY{k}{if} \PY{n}{unwrap\PYZus{}}\PY{p}{:}
+        \PY{n}{ph} \PY{o}{=} \PY{n}{unwrap}\PY{p}{(}\PY{n}{ph}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} get mag}
+    \PY{n}{mag} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{Y}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} clean up phase where mag is sufficiently close to 0}
+    \PY{n}{ph}\PY{p}{[}\PY{n}{where}\PY{p}{(}\PY{n}{mag}\PY{o}{\PYZlt{}}\PY{n}{tol}\PY{p}{)}\PY{p}{]}\PY{o}{=}\PY{l+m+mi}{0}
+    
+    \PY{c+c1}{\PYZsh{} plot }
+    \PY{n}{fig}\PY{p}{,}\PY{n}{axes} \PY{o}{=} \PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+    \PY{n}{ax1}\PY{p}{,}\PY{n}{ax2} \PY{o}{=} \PY{n}{axes}
+    
+    \PY{c+c1}{\PYZsh{} magnitude}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude of DFT of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{mag}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{c+c1}{\PYZsh{},s=scatter\PYZus{}size)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} phase}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase of DFT of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase in rad}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{ph}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{n}{scatter\PYZus{}size}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    
+    \PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{w}\PY{p}{,}\PY{n}{Y}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    Let us use this function to find the DFT of \(sin(5t)\):
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{sin5}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{sin}\PY{p}{(}\PY{l+m+mi}{5}\PY{o}{*}\PY{n}{t}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_15_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    As expected, there are two peaks at frequencies of \(5\) and \(-5\), of
+height \(0.5\). The phases of the peaks correspond to the
+\(\frac{1}{j}\) and \(\frac{-1}{j}\) multiplying the exponentials in the
+expansion:
+
+\[sin(5t) = 0.5(\frac{e^{5t}}{j}-\frac{e^{-5t}}{j})\]
+
+	
+
+	
+		
+    \section{Amplitude modulation}\label{amplitude-modulation}
+
+	
+
+	
+		
+    Let's find the DFT of the AM modulated wave:
+
+\[(1+0.1\cos(t))\cos(10t)\]
+
+	
+
+	
+		
+    First the examples in the assignment are worked through:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_20_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    Using a finer frequency resolution:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{amMod}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{p}{(}\PY{l+m+mi}{1}\PY{o}{+}\PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{10}\PY{o}{*}\PY{n}{t}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_23_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    The phase is 0 everywhere as expected, as the terms are only cosine
+waveforms which have real DFTs. The magnitude has two large peaks at
+frequency of 10 corresponding to the carrier cosine wave. This wave is
+then multiplied by a low amplitude low frequency cosine in the time
+domain. This corresponds to convolution in the frequency domain. This
+results in the two sidebands next to each of the carrier bands.
+
+	
+
+	
+		
+    \section{\texorpdfstring{Spectrum of
+\(\sin^3(t)\)}{Spectrum of \textbackslash{}sin\^{}3(t)}}\label{spectrum-of-sin3t}
+
+	
+
+	
+		
+    Using the following identity:
+\[\sin^3(t) = \frac{3}{4}\sin(t) - \frac{1}{4}\sin(3t)\]
+
+We expect two sets of peaks at frequencies of 1 and 3, with heights
+corresponding to half of \(0.75\) and \(0.25\).
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{sin3}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{sin}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+\end{Verbatim}
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_28_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe the peaks in the magnitude at the expected frequencies of 1
+and 3, along with the expected amplitudes. The phases of the peaks are
+also in agreement with what is expected(one is a positive sine while the
+other is a negative sine).
+
+	
+
+	
+		
+    \section{\texorpdfstring{Spectrum of
+\(\cos^3(t)\)}{Spectrum of \textbackslash{}cos\^{}3(t)}}\label{spectrum-of-cos3t}
+
+	
+
+	
+		
+    Using the following identity:
+\[\cos^3(t) = \frac{3}{4}\cos(t) + \frac{1}{4}\cos(3t)\]
+
+We expect two sets of peaks at frequencies of 1 and 3, with heights
+corresponding to half of \(0.75\) and \(0.25\).
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{cos3}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{cos}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{3}
+\end{Verbatim}
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_33_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe the peaks in the magnitude at the expected frequencies of 1
+and 3, along with the expected amplitudes. The phases of the peaks are
+also in agreement with what is expected(both are positive cosines).
+
+	
+
+	
+		
+    \section{Frequency modulation}\label{frequency-modulation}
+
+	
+
+	
+		
+    We find the DFT of the following frequency modulated signal:
+
+\[ \cos(20t +5 \cos(t))\]
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{fm}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{20}\PY{o}{*}\PY{n}{t} \PY{o}{+} \PY{l+m+mi}{5}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_38_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    There are many more sidebands compared to AM in the case of FM. Most of
+the energy of the signal is also present in these sidebands rather than
+the carrier band in the case of AM.
+
+	
+
+	
+		
+    \section{Continuous time Fourier Transform of
+Gaussian}\label{continuous-time-fourier-transform-of-gaussian}
+
+	
+
+	
+		
+    The fourier transform of a signal \(x(t)\) is defined as follows:
+
+\[X(\omega) = \frac{1}{2 \pi} \int_{- \infty}^{\infty} x(t) e^{-j \omega t} dt\]
+
+We can approximate this by the fourier transform of the windowed version
+of the signal \(x(t)\), with a sufficiently large window. Let the window
+be of size \(T\). We get:
+
+\[X(\omega) \approx \frac{1}{2 \pi} \int_{- \frac{T}{2}}^{\frac{T}{2}} x(t) e^{-j \omega t} dt\]
+
+We can write the integral approximately as a Reimann sum:
+
+\[X(\omega) \approx \frac{\Delta t}{2 \pi} \sum_{n = -\frac{N}{2}}^{\frac{N}{2}-1} x(n \Delta t) e^{-j \omega n \Delta t}\]
+
+Where we divide the integration domain into \(N\) parts (assume \(N\) is
+even), each of width \(\Delta t = \frac{T}{N}\).
+
+Now, we sample our spectrum with a sampling period in the frequency
+domain of \(\Delta \omega = \frac{2 \pi}{T}\), which makes our
+continuous time signal periodic with period equal to the window size
+\(T\). Our transform then becomes:
+
+\[X(k \Delta \omega) \approx \frac{\Delta t}{2 \pi} \sum_{n = -\frac{N}{2}}^{\frac{N}{2}-1} x(n \Delta t) e^{-j k n \Delta \omega \Delta t}\]
+
+Which simplifies to:
+
+\[X(k \Delta \omega) \approx \frac{\Delta t}{2 \pi} \sum_{n = -\frac{N}{2}}^{\frac{N}{2}-1} 
+x(n \Delta t) e^{-j \frac{2 \pi}{N} k n}\]
+
+Noticing that the summation is of the form of a DFT, we can finally
+write:
+
+\[X(k \Delta \omega) \approx \frac{\Delta t}{2 \pi} DFT \{x(n \Delta t)\}\]
+
+The two approximations we made were:
+
+\begin{itemize}
+\tightlist
+\item
+  The fourier transform of the windowed signal is approximately the same
+  as that of the original.
+\item
+  The integral was approximated as a Reimann sum.
+\end{itemize}
+
+We can improve these approximations by making the window size \(T\)
+larger, and by decreasing the time domain sampling period or increasing
+the number of samples \(N\). We implement this in an iterative algorithm
+in the next part.
+
+The analytical expression of the fourier transform of the gaussian:
+
+\[x(t) = e^{\frac{-t^2}{2}}\]
+
+Was found as:
+
+\[X(j \omega) = \frac{1}{\sqrt{2 \pi}}e^{\frac{-\omega^2}{2}}\]
+
+We also compare the numerical results with the expected analytical
+expression.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{gauss}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{t}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+
+\PY{k}{def} \PY{n+nf}{expected\PYZus{}gaussFT}\PY{p}{(}\PY{n}{w}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{sqrt}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{p}{)} \PY{o}{*} \PY{n}{exp}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{w}\PY{o}{*}\PY{o}{*}\PY{l+m+mi}{2}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    A function to estimate this continuous time fourier transform by
+windowing the input function, sampling, and then finding the DFT is
+written below. The function iteratively increases window size and sample
+number until the consecutive total absolute error between estimates
+reduces below a given threshold.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{estimateCTFT}\PY{p}{(}\PY{n}{func}\PY{p}{,} \PY{n}{tol}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}6}\PY{p}{,}\PY{n}{time\PYZus{}samples}\PY{o}{=}\PY{l+m+mi}{128}\PY{p}{,} \PY{n}{true\PYZus{}func}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} 
+                 \PY{n}{func\PYZus{}name}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{wlim}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,} \PY{n}{scatter\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Estimate the continuous time Fourier Transform of the given function}
+\PY{l+s+sd}{    by finding the DFT of a sampled window of the function. The magnitude and}
+\PY{l+s+sd}{    phase of the estimate are also plotted.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    The window size and sample number are doubled until the consecutive }
+\PY{l+s+sd}{    total absolute error between two estimates is less than the given tolerance.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    time\PYZus{}samples : the initial number of samples to start with}
+\PY{l+s+sd}{    true\PYZus{}func : A function which is the analytical CTFT of the given function.}
+\PY{l+s+sd}{                Used to compare the estimate results with the true results.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    Returns frequencies and the CTFT estimate at those frequencies.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{k}{if} \PY{n}{func\PYZus{}name} \PY{o}{==} \PY{k+kc}{None}\PY{p}{:}
+        \PY{n}{func\PYZus{}name} \PY{o}{=} \PY{n}{func}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
+    
+    
+    \PY{n}{T} \PY{o}{=} \PY{l+m+mi}{8}\PY{o}{*}\PY{n}{pi}
+    \PY{n}{N} \PY{o}{=} \PY{n}{time\PYZus{}samples}
+    \PY{n}{Xold} \PY{o}{=} \PY{l+m+mi}{0}
+    \PY{n}{error} \PY{o}{=} \PY{n}{tol}\PY{o}{+}\PY{l+m+mi}{1}
+    \PY{n}{iters}\PY{o}{=}\PY{l+m+mi}{0}
+    
+    \PY{k}{while} \PY{n}{error}\PY{o}{\PYZgt{}}\PY{n}{tol}\PY{p}{:}
+        
+        \PY{n}{delta\PYZus{}t} \PY{o}{=} \PY{n}{T}\PY{o}{/}\PY{n}{N} \PY{c+c1}{\PYZsh{} time resolution}
+        \PY{n}{delta\PYZus{}w} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{n}{T} \PY{c+c1}{\PYZsh{} frequency resolution}
+
+        \PY{n}{W} \PY{o}{=} \PY{n}{N}\PY{o}{*}\PY{n}{delta\PYZus{}w} \PY{c+c1}{\PYZsh{} total frequency window size}
+
+        \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{T}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{T}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{N}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{c+c1}{\PYZsh{} time points}
+        \PY{n}{w} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{W}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{W}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{N}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{c+c1}{\PYZsh{} freq points}
+
+        \PY{n}{x} \PY{o}{=} \PY{n}{func}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+
+        \PY{c+c1}{\PYZsh{} find DFT and normalize}
+        \PY{c+c1}{\PYZsh{} note that ifftshift is used to prevent artifacts in the}
+        \PY{c+c1}{\PYZsh{} phase of the result due to time domain shifting}
+        \PY{n}{X} \PY{o}{=} \PY{n}{delta\PYZus{}t}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{p}{)} \PY{o}{*} \PY{n}{fftshift}\PY{p}{(}\PY{n}{fft}\PY{p}{(}\PY{n}{ifftshift}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{error} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{X}\PY{p}{[}\PY{p}{:}\PY{p}{:}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{Xold}\PY{p}{)}\PY{p}{)}
+        
+        \PY{n}{Xold} \PY{o}{=} \PY{n}{X}
+        \PY{n}{N} \PY{o}{*}\PY{o}{=} \PY{l+m+mi}{2} \PY{c+c1}{\PYZsh{} number of samples}
+        \PY{n}{T} \PY{o}{*}\PY{o}{=} \PY{l+m+mi}{2} \PY{c+c1}{\PYZsh{} total time window size}
+        \PY{n}{iters}\PY{o}{+}\PY{o}{=}\PY{l+m+mi}{1}
+        
+        
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Estimated error after }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{ iterations: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{iters}\PY{p}{,} \PY{n}{error}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Time range : (}\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{, }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{T}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{,}\PY{n}{T}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Time resolution : }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{delta\PYZus{}t}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency resolution : }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{delta\PYZus{}w}\PY{p}{)}\PY{p}{)}
+        
+    \PY{k}{if} \PY{n}{true\PYZus{}func} \PY{o}{!=} \PY{k+kc}{None}\PY{p}{:}
+        \PY{n}{true\PYZus{}error} \PY{o}{=} \PY{n+nb}{sum}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{X}\PY{o}{\PYZhy{}}\PY{n}{true\PYZus{}func}\PY{p}{(}\PY{n}{w}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{True error: }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{true\PYZus{}error}\PY{p}{)}\PY{p}{)}
+    
+    \PY{n}{mag} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+    \PY{n}{ph} \PY{o}{=} \PY{n}{angle}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+    \PY{n}{ph}\PY{p}{[}\PY{n}{where}\PY{p}{(}\PY{n}{mag}\PY{o}{\PYZlt{}}\PY{n}{tol}\PY{p}{)}\PY{p}{]}\PY{o}{=}\PY{l+m+mi}{0}
+    
+    \PY{c+c1}{\PYZsh{} plot estimate}
+    \PY{n}{fig}\PY{p}{,}\PY{n}{axes} \PY{o}{=} \PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+    \PY{n}{ax1}\PY{p}{,}\PY{n}{ax2} \PY{o}{=} \PY{n}{axes}
+    
+    \PY{c+c1}{\PYZsh{} magnitude}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude of CFT estimate of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{mag}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{c+c1}{\PYZsh{},s=scatter\PYZus{}size)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} phase}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase of CFT estimate of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase in rad}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{ph}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{n}{scatter\PYZus{}size}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    
+    \PY{n}{show}\PY{p}{(}\PY{p}{)}
+    
+    \PY{k}{if} \PY{n}{true\PYZus{}func} \PY{o}{!=} \PY{k+kc}{None}\PY{p}{:}
+        
+        \PY{n}{X\PYZus{}} \PY{o}{=} \PY{n}{true\PYZus{}func}\PY{p}{(}\PY{n}{w}\PY{p}{)}
+        
+        \PY{n}{mag} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{X\PYZus{}}\PY{p}{)}
+        \PY{n}{ph} \PY{o}{=} \PY{n}{angle}\PY{p}{(}\PY{n}{X\PYZus{}}\PY{p}{)}
+        \PY{n}{ph}\PY{p}{[}\PY{n}{where}\PY{p}{(}\PY{n}{mag}\PY{o}{\PYZlt{}}\PY{n}{tol}\PY{p}{)}\PY{p}{]}\PY{o}{=}\PY{l+m+mi}{0}
+        
+        \PY{c+c1}{\PYZsh{} plot true}
+        \PY{n}{fig}\PY{p}{,}\PY{n}{axes} \PY{o}{=} \PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+        \PY{n}{ax1}\PY{p}{,}\PY{n}{ax2} \PY{o}{=} \PY{n}{axes}
+
+        \PY{c+c1}{\PYZsh{} magnitude}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude of true CFT of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{mag}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{c+c1}{\PYZsh{},s=scatter\PYZus{}size)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+        \PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+
+        \PY{c+c1}{\PYZsh{} phase}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase of true CFT }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase in rad}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{ph}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+        \PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+        
+        \PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{w}\PY{p}{,}\PY{n}{X}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We use the above function to estimate the fourier transform of the given
+gaussian upto a tolerance of \(10^{-6}\).
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Estimated error after 2 iterations: 8.430912440960026e-15
+Time range : (-50.2655, 50.2655)
+Time resolution : 0.1963
+Frequency resolution : 0.1250
+True error: 3.9543195419547677e-14
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_46_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment9_files/Assignment9_46_2.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \section{Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  From the above pairs of plots, it is clear that with a sufficiently
+  large window size and sampling rate, the DFT approximates the CTFT of
+  the gaussian.
+\item
+  This is because the magnitude of the gaussian quickly approaches \(0\)
+  for large values of time. This means that there is lesser frequency
+  domain aliasing due to windowing. This can be interpreted as follows:
+\item
+  Windowing in time is equivalent to convolution with a sinc in
+  frequency domain. A large enough window means that the sinc is tall
+  and thin. This tall and thin sinc is approximately equivalent to a
+  delta function for a sufficiently large window. This means that
+  convolution with this sinc does not change the spectrum much.
+\item
+  Sampling after windowing is done so that the DFT can be calculated
+  using the Fast Fourier Transform. This is then a sampled version of
+  the DTFT of the sampled time domain signal. With sufficiently large
+  sampling rates, this approximates the CTFT of the original time domain
+  signal.
+\item
+  This process is done on the gaussian and the results are in agreement
+  with what is expected.
+\end{itemize}
+
+	
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}

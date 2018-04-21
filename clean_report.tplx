@@ -1,0 +1,41 @@
+% use this command to make the latex file
+% jupyter nbconvert --to latex <>.ipynb --template clean_report.tplx
+((*- extends 'article.tplx' -*))
+
+((* block title *))
+    \title{((( nb.metadata.get("title", "") )))}            
+((* endblock title *))
+
+((* block input_group *))
+	((* if cell['metadata'].get("include",1)==1 *))
+		((( super() )))
+	((* endif *))
+((* endblock input_group *))
+
+((* block input scoped*))
+	((* set ns = namespace(lines=cell.source.split("\n"), out='') *))
+	((* for line in ns.lines *))
+		((* if not line.startswith("%%")*))
+			((* set ns.out=ns.out+"\n"+line *))
+		((* endif *))
+	((* endfor *))
+	(((ns.out.strip() | highlight_code(strip_verbatim=False, metadata=cell.metadata))))
+	
+((* endblock input *))
+
+((* block markdowncell *))
+	((* if cell['metadata'].get("include",1)==1 *))
+		((( super() )))
+	((* endif *))
+((* endblock markdowncell *))
+
+% FIll in your info
+% Author info
+((* block author *))
+\author{
+  \textbf{Name}: Name\\
+  \textbf{Roll Number}: Roll No
+}
+((* endblock author *))
+
+

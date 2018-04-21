@@ -242,3 +242,5 @@ plt.show()
 
 a=plotFilterOutputs(time_domain_fn=lambda t:input_f(t,decay=1e1,freq=1e3),lp_range=(0,1.8e-1),points=1e5
                   ,input_name='\nlow frequency damped sinusoid')
+
+a = plotFilterOutputs(time_domain_fn=vi1,input_name="sum of sinusoids",points=1e5,hp_range=(0,1e-3),lp_range=(0,1e-5))
