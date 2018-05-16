@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Worked examples}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Spectrum of \134sin\(\134sqrt\1732\175t\)}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{The Hamming window}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Spectrum after windowing}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{FFT with hamming window}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{The function}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{FFT of \134cos\1363\(0.86t\)}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Estimating \134omega and \134delta}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Estimator 1}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Estimator 2}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Spectrogram analysis of a chirp}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{The chirp signal}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{FFT of the chirp}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.3}{FFT over multiple windows}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 16

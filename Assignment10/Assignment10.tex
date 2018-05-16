@@ -1,0 +1,2072 @@
+% jupyter nbconvert --to pdf HW0.ipynb --template clean_report.tplx
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    
+    \title{EE2703 Applied Programming Lab - Assignment 10}            
+
+    
+    
+\author{
+  \textbf{Name}: Rajat Vadiraj Dwaraknath\\
+  \textbf{Roll Number}: EE16B033
+}
+
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+	
+
+	
+		
+    \section{Introduction}\label{introduction}
+
+In this assignment, we continue our analysis of signals using Fourier
+Transforms. This time, we focus on finding transforms of functions which
+are discontinuous when periodically extended. An example of this is
+\(\sin(\sqrt{2} t)\). The discontiuity causes fourier components in
+frequencies other than the sinusoids frequency which decay as
+\(\frac{1}{\omega}\), due to Gibbs phenomenon. We resolve this problem
+using the process of windowing. In this assignment, we focus on one
+particular type of window - the Hamming window. We use this windowed
+transform to analyse signals known to contain a sinusoid of unknown
+frequencies and extract its phase and frequency. We then perform a
+sliding DFT on a chirped signal and plot a spectrogram or a
+time-frequency plot.
+
+	
+
+	
+
+	
+
+	
+
+	
+		
+    \section{Worked examples}\label{worked-examples}
+
+The examples given are worked through below:
+
+	
+
+	
+		
+    \subsection{\texorpdfstring{Spectrum of
+\(\sin(\sqrt{2}t)\)}{Spectrum of \textbackslash{}sin(\textbackslash{}sqrt\{2\}t)}}\label{spectrum-of-sinsqrt2t}
+
+	
+
+	
+		
+    The spectrum of \(\sin(\sqrt{2}t)\) is plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_8_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    This is the function for which we want to find the DFT:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_10_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    However, when we calculate the DFT by sampling over a finite time
+window, we end up calculating the DFT of the following periodic signal:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_12_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    This results in discontinuites in the signal. These discontinuities lead
+to spectral components which decay as \(\frac{1}{\omega}\). To confirm
+this, we plot the spectrum of the periodic ramp below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_14_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \subsection{The Hamming window}\label{the-hamming-window}
+
+	
+
+	
+		
+    We resolve the problem of discontinuities by attenuating the signal near
+the endpoints of our time window, to reduce the discontinuities caused
+by periodically extending the signal. This is done by multiplying by a
+so called windowing function. In this assignment we use the Hamming
+window of size \(N\):
+
+\[x[n] =  0.54+0.46 \cos \left( 2\pi \frac{n}{N-1} \right)\]
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{hamming}\PY{p}{(}\PY{n}{n}\PY{p}{)}\PY{p}{:}
+    \PY{n}{n} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{n}{n}\PY{p}{)}
+    \PY{n}{N} \PY{o}{=} \PY{n}{n}\PY{o}{.}\PY{n}{shape}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{k}{return} \PY{l+m+mf}{0.54}\PY{o}{+}\PY{l+m+mf}{0.46}\PY{o}{*}\PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{o}{*}\PY{n}{n}\PY{o}{/}\PY{p}{(}\PY{n}{N}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We plot it below for \(N = 64\)
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_19_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \subsection{Spectrum after windowing}\label{spectrum-after-windowing}
+
+	
+
+	
+		
+    We now multiply our signal with the Hamming window and then periodically
+extend it:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_22_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    The spectrum is found below using a window size of \(2 \pi\):
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_24_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    And with a window size of \(8 \pi\)
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_26_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe that the spectrum has much more components with a magnitude
+of zero. However, the peak at the frequency of \(\sqrt{2}\) has been
+broadened due to spectral leakage.
+
+	
+
+	
+		
+    \section{FFT with hamming window}\label{fft-with-hamming-window}
+
+	
+
+	
+		
+    \subsection{The function}\label{the-function}
+
+We first write a general function to find the windowed FFT of a given
+input signal:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{plotFFT}\PY{p}{(}\PY{n}{func}\PY{p}{,}\PY{n}{t\PYZus{}range}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{p}{)}\PY{p}{,}\PY{n}{points}\PY{o}{=}\PY{l+m+mi}{128}\PY{p}{,}\PY{n}{tol}\PY{o}{=}\PY{l+m+mf}{1e\PYZhy{}5}\PY{p}{,}
+            \PY{n}{func\PYZus{}name}\PY{o}{=}\PY{k+kc}{None}\PY{p}{,}\PY{n}{unwrap\PYZus{}}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,}\PY{n}{wlim}\PY{o}{=}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{,}\PY{n}{scatter\PYZus{}size}\PY{o}{=}\PY{l+m+mi}{40}\PY{p}{,}
+           \PY{n}{iff}\PY{o}{=}\PY{k+kc}{False}\PY{p}{,} \PY{n}{plot}\PY{o}{=}\PY{k+kc}{True}\PY{p}{,} \PY{n}{window}\PY{o}{=}\PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Plot the FFT of the given continuous function.}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    func : the continuous function}
+\PY{l+s+sd}{    t\PYZus{}range : the time range over which to sample the function,}
+\PY{l+s+sd}{        exclusive of the last value}
+\PY{l+s+sd}{    points : number of samples}
+\PY{l+s+sd}{    tol : tolerance for setting phase to 0 when magnitude is low}
+\PY{l+s+sd}{    func\PYZus{}name : name of the function}
+\PY{l+s+sd}{    unwrap : whether to unwrap phase}
+\PY{l+s+sd}{    wlim : range of frequencies for the plots, give None for all frequencies}
+\PY{l+s+sd}{    scatter\PYZus{}size : size of scatter plot points}
+\PY{l+s+sd}{    iff: whether to do an ifftshift on the time range}
+\PY{l+s+sd}{    }
+\PY{l+s+sd}{    Returns:}
+\PY{l+s+sd}{    numpy array containing the FFT, after being shifted and normalized.}
+\PY{l+s+sd}{    \PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{c+c1}{\PYZsh{} default name for function}
+    \PY{k}{if} \PY{n}{func\PYZus{}name} \PY{o}{==} \PY{k+kc}{None}\PY{p}{:}
+        \PY{n}{func\PYZus{}name} \PY{o}{=} \PY{n}{func}\PY{o}{.}\PY{n+nv+vm}{\PYZus{}\PYZus{}name\PYZus{}\PYZus{}}
+    
+    \PY{c+c1}{\PYZsh{} time points to sample}
+    \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{*}\PY{n}{t\PYZus{}range}\PY{p}{,}\PY{n}{points}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{n}{T} \PY{o}{=} \PY{n}{t\PYZus{}range}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{\PYZhy{}}\PY{n}{t\PYZus{}range}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{samplingfreq} \PY{o}{=} \PY{n}{points}\PY{o}{/}\PY{n}{T}
+    
+    \PY{k}{if} \PY{n}{iff}\PY{p}{:}
+        \PY{n}{t} \PY{o}{=} \PY{n}{ifftshift}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} corresponding frequencies of the sampled signal}
+    \PY{n}{w} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{pi}\PY{p}{,}\PY{n}{pi}\PY{p}{,}\PY{n}{points}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{n}{w} \PY{o}{=} \PY{n}{w}\PY{o}{*}\PY{n}{samplingfreq}
+    
+    \PY{c+c1}{\PYZsh{} find fft}
+    \PY{n}{y} \PY{o}{=} \PY{n}{func}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+    \PY{k}{if} \PY{n}{window}\PY{p}{:}
+        \PY{n}{wnd} \PY{o}{=} \PY{n}{fftshift}\PY{p}{(}\PY{n}{hamming}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{n}{points}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+        \PY{n}{y} \PY{o}{=} \PY{n}{y}\PY{o}{*}\PY{n}{wnd}
+    \PY{n}{Y} \PY{o}{=}  \PY{n}{fftshift}\PY{p}{(} \PY{n}{fft}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{points}
+    
+    \PY{k}{if} \PY{o+ow}{not} \PY{n}{plot}\PY{p}{:}\PY{k}{return} \PY{n}{w}\PY{p}{,}\PY{n}{Y}
+    \PY{c+c1}{\PYZsh{} get phase}
+    \PY{n}{ph} \PY{o}{=} \PY{n}{angle}\PY{p}{(}\PY{n}{Y}\PY{p}{)}
+    \PY{k}{if} \PY{n}{unwrap\PYZus{}}\PY{p}{:}
+        \PY{n}{ph} \PY{o}{=} \PY{n}{unwrap}\PY{p}{(}\PY{n}{ph}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} get mag}
+    \PY{n}{mag} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{Y}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} clean up phase where mag is sufficiently close to 0}
+    \PY{n}{ph}\PY{p}{[}\PY{n}{where}\PY{p}{(}\PY{n}{mag}\PY{o}{\PYZlt{}}\PY{n}{tol}\PY{p}{)}\PY{p}{]}\PY{o}{=}\PY{l+m+mi}{0}
+    
+    \PY{c+c1}{\PYZsh{} plot }
+    \PY{n}{fig}\PY{p}{,}\PY{n}{axes} \PY{o}{=} \PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{)}
+    \PY{n}{ax1}\PY{p}{,}\PY{n}{ax2} \PY{o}{=} \PY{n}{axes}
+    
+    \PY{c+c1}{\PYZsh{} magnitude}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude of DFT of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Magnitude}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{mag}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{mag}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{red}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{n}{scatter\PYZus{}size}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+    \PY{n}{ax1}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    
+    \PY{c+c1}{\PYZsh{} phase}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}title}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase of DFT of }\PY{l+s+si}{\PYZob{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{func\PYZus{}name}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Frequency in rad/s}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}ylabel}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Phase in rad}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{ph}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{n}{w}\PY{p}{,}\PY{n}{ph}\PY{p}{,}\PY{n}{color}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{green}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{n}{s}\PY{o}{=}\PY{n}{scatter\PYZus{}size}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{set\PYZus{}xlim}\PY{p}{(}\PY{n}{wlim}\PY{p}{)}
+    \PY{n}{ax2}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{p}{)}
+    
+    \PY{n}{show}\PY{p}{(}\PY{p}{)}
+    \PY{k}{return} \PY{n}{w}\PY{p}{,}\PY{n}{Y}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    \subsection{\texorpdfstring{FFT of
+\(\cos^3(0.86t)\)}{FFT of \textbackslash{}cos\^{}3(0.86t)}}\label{fft-of-cos30.86t}
+
+	
+
+	
+		
+    We first find the FFT without the Hamming window:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_33_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We repeat the process, but with Hamming window:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_35_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Estimated first peak frequency: 0.8597
+
+    \end{Verbatim}
+
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  We observe that in the case without a Hamming window, a lot of energy
+  in the spectrum was in frequencies other than those of the signal.
+  This is because of the Gibbs phenomenon.
+\item
+  We observe that the windowed transform is much better in terms of the
+  magnitude spectrum. Only components near the frequencies of the input
+  signal are present, while others are mostly 0. The reason that some
+  frequencies near the actual peak are present is because multiplying by
+  a window in the time domain corresponds to a convolution in the
+  frequency domain with its fourier transform. This means that the delta
+  functions in the frequency domain are smeared out by the spectrum of
+  the Hamming window.
+\end{itemize}
+
+	
+
+	
+		
+    \section{\texorpdfstring{Estimating \(\omega\) and
+\(\delta\)}{Estimating \textbackslash{}omega and \textbackslash{}delta}}\label{estimating-omega-and-delta}
+
+	
+
+	
+		
+    The task is to estimate the values of \(\omega\) and \(\delta\) given
+128 samples of \(\cos (\omega t + \delta)\) for \((-\pi, -\pi)\).
+
+	
+
+	
+		
+    \subsection{Estimator 1}\label{estimator-1}
+
+	
+
+	
+		
+    The first approach is to take the windowed and non-windowed DFT of the
+128 samples. We then find a weighted average of frequencies weighted by
+the magnitude of the DFT to obtain the peak frequency \(\omega\). To
+find \(\delta\), phase values around the peak frequency are averaged.
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{estimateWD1}\PY{p}{(}\PY{n}{vec}\PY{p}{,}\PY{n}{l}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,}\PY{n}{window}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Estimate the value of omega and delta assuming vec contains}
+\PY{l+s+sd}{    128 samples of cos(omega*t + delta) in (\PYZhy{}pi,pi). Uses the magnitude}
+\PY{l+s+sd}{    and phase spectra to estimate omega and delta respectively.\PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{128}
+    \PY{n}{delta\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{n}{N}
+    \PY{n}{w\PYZus{}max} \PY{o}{=} \PY{n}{pi}\PY{o}{/}\PY{n}{delta\PYZus{}t}
+    \PY{n}{delta\PYZus{}w} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{w\PYZus{}max}\PY{o}{/}\PY{n}{N}
+    
+    \PY{n}{w} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{w\PYZus{}max}\PY{p}{,}\PY{n}{w\PYZus{}max}\PY{p}{,}\PY{n}{N}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    
+    \PY{k}{if} \PY{n}{window}\PY{p}{:}
+        \PY{n}{vec\PYZus{}} \PY{o}{=} \PY{n}{vec}\PY{o}{*}\PY{n}{fftshift}\PY{p}{(}\PY{n}{hamming}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{n}{vec\PYZus{}} \PY{o}{=} \PY{n}{vec}
+        
+    \PY{n}{y} \PY{o}{=} \PY{n}{fft}\PY{p}{(}\PY{n}{fftshift}\PY{p}{(}\PY{n}{vec\PYZus{}}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{N}
+    \PY{n}{mag} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+    
+    \PY{n}{points} \PY{o}{=} \PY{n}{mag}\PY{p}{[}\PY{p}{:}\PY{n}{l}\PY{p}{]}
+    \PY{n}{ind} \PY{o}{=} \PY{n}{arange}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+    \PY{n}{omega} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{points}\PY{o}{*}\PY{n}{ind}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{points}\PY{p}{)}
+    \PY{n}{start}\PY{o}{=}\PY{l+m+mi}{0}
+    \PY{k}{if} \PY{n}{omega}\PY{o}{\PYZgt{}}\PY{l+m+mi}{1}\PY{p}{:}
+        \PY{n}{start}\PY{o}{=}\PY{l+m+mi}{1}
+    \PY{n}{delta} \PY{o}{=} \PY{n}{mean}\PY{p}{(}\PY{n}{angle}\PY{p}{(}\PY{n}{y}\PY{p}{)}\PY{p}{[}\PY{n}{start}\PY{p}{:}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+    \PY{k}{return} \PY{n}{omega}\PY{p}{,}\PY{n}{delta}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    A function to test a general estimator is written below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{testEstimator}\PY{p}{(}\PY{n}{est}\PY{p}{,}\PY{n}{trials}\PY{o}{=}\PY{l+m+mi}{100}\PY{p}{,}\PY{n}{noise} \PY{o}{=} \PY{k+kc}{False}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Test an estimator of omega and delta.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{pi}\PY{p}{,}\PY{n}{pi}\PY{p}{,}\PY{l+m+mi}{128}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+
+    \PY{n}{oms}\PY{o}{=}\PY{p}{[}\PY{p}{]}
+    \PY{n}{ompreds}\PY{o}{=}\PY{p}{[}\PY{p}{]}
+    
+    \PY{n}{dels} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+    \PY{n}{delpreds} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+
+    \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{trials}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+        \PY{n}{omega} \PY{o}{=} \PY{l+m+mf}{0.5}\PY{o}{+}\PY{n}{rand}\PY{p}{(}\PY{p}{)}
+        \PY{n}{oms}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{omega}\PY{p}{)}
+        \PY{n}{delta} \PY{o}{=} \PY{n}{pi}\PY{o}{*}\PY{p}{(}\PY{n}{rand}\PY{p}{(}\PY{p}{)}\PY{o}{\PYZhy{}}\PY{l+m+mf}{0.5}\PY{p}{)}
+        \PY{n}{dels}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{delta}\PY{p}{)}
+        
+        \PY{n}{v} \PY{o}{=} \PY{n}{cos}\PY{p}{(}\PY{n}{omega}\PY{o}{*}\PY{n}{t}\PY{o}{+}\PY{n}{delta}\PY{p}{)}
+        \PY{k}{if} \PY{n}{noise}\PY{p}{:}
+            \PY{n}{v} \PY{o}{+}\PY{o}{=} \PY{l+m+mf}{0.1}\PY{o}{*}\PY{n}{randn}\PY{p}{(}\PY{l+m+mi}{128}\PY{p}{)}
+        \PY{n}{om}\PY{p}{,} \PY{n}{de} \PY{o}{=} \PY{n}{est}\PY{p}{(}\PY{n}{v}\PY{p}{)}
+        
+        \PY{n}{ompreds}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{om}\PY{p}{)}
+        \PY{n}{delpreds}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{de}\PY{p}{)}
+        
+    \PY{n}{oms} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{n}{oms}\PY{p}{)}
+    \PY{n}{dels} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{n}{dels}\PY{p}{)}
+    \PY{n}{ompreds} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{n}{ompreds}\PY{p}{)}
+    \PY{n}{delpreds} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{n}{delpreds}\PY{p}{)}
+    \PY{n}{omerr} \PY{o}{=} \PY{n}{mean}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{oms}\PY{o}{\PYZhy{}}\PY{n}{ompreds}\PY{p}{)}\PY{p}{)}
+    \PY{n}{delerr} \PY{o}{=} \PY{n}{mean}\PY{p}{(}\PY{n+nb}{abs}\PY{p}{(}\PY{n}{dels}\PY{o}{\PYZhy{}}\PY{n}{delpreds}\PY{p}{)}\PY{p}{)}
+    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MAE for omega: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+se}{\PYZbs{}t}\PY{l+s+s2}{MAE for delta: }\PY{l+s+si}{\PYZob{}:.4f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{omerr}\PY{p}{,}\PY{n}{delerr}\PY{p}{)}\PY{p}{)}
+    \PY{k}{return} \PY{n}{omerr}\PY{p}{,}\PY{n}{delerr}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We test the first estimator for \(1000\) trials with random \(\omega\)
+and \(\delta\). We then report the mean absolute error. We iterate over
+different averaging window sizes \(k\), to find the window with the
+least error.
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Mean absolute errors for different window sizes:
+Estimator 1 without noise:
+k=1	MAE for omega: 0.9815	MAE for delta: 0.2814
+k=2	MAE for omega: 0.3537	MAE for delta: 0.2744
+k=3	MAE for omega: 0.1263	MAE for delta: 0.1209
+k=4	MAE for omega: 0.1101	MAE for delta: 0.1095
+k=5	MAE for omega: 0.1173	MAE for delta: 0.1126
+k=6	MAE for omega: 0.1162	MAE for delta: 0.1081
+k=7	MAE for omega: 0.1220	MAE for delta: 0.1010
+k=8	MAE for omega: 0.1287	MAE for delta: 0.0937
+k=9	MAE for omega: 0.1457	MAE for delta: 0.0974
+k=10	MAE for omega: 0.1539	MAE for delta: 0.0921
+
+    \end{Verbatim}
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Mean absolute errors for different window sizes:
+Estimator 1 with noise:
+k=1	MAE for omega: 1.0072	MAE for delta: 0.2706
+k=2	MAE for omega: 0.3392	MAE for delta: 0.2818
+k=3	MAE for omega: 0.1227	MAE for delta: 0.1305
+k=4	MAE for omega: 0.1143	MAE for delta: 0.1193
+k=5	MAE for omega: 0.1092	MAE for delta: 0.1042
+k=6	MAE for omega: 0.1132	MAE for delta: 0.0921
+k=7	MAE for omega: 0.1421	MAE for delta: 0.0821
+k=8	MAE for omega: 0.1789	MAE for delta: 0.0703
+k=9	MAE for omega: 0.2548	MAE for delta: 0.0609
+k=10	MAE for omega: 0.3170	MAE for delta: 0.0512
+
+    \end{Verbatim}
+
+	
+		
+    It is clear from the above results that a value of k around \(4\) or
+\(5\) works best. The estimator is not vastly affected by the noise
+added. This is because the noise mainly contains very high frequency
+components, which will not affect the low frequency parts of the
+spectrum. We try another approach to estimate delta below:
+
+	
+
+	
+		
+    \subsection{Estimator 2}\label{estimator-2}
+
+	
+
+	
+		
+    Using the value of \(omega\) estimated by weighted averaging (say
+\(\omega'\)), we then fit a model using least squares and estimate
+\(\delta\). In particular, we fit the 128 unwindowed samples to the
+model:
+
+\[x(t) = A \cos (\omega' t) + B sin(\omega' t)\]
+
+We can then estimate the phase \(\delta\) as follows:
+
+\[\delta = - \tan^{-1} \left( \frac{B}{A} \right)\]
+
+The estimator is written below:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{estimateWD2}\PY{p}{(}\PY{n}{vec}\PY{p}{,}\PY{n}{l}\PY{o}{=}\PY{l+m+mi}{6}\PY{p}{,}\PY{n}{window}\PY{o}{=}\PY{k+kc}{True}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Estimate the value of omega and delta assuming vec contains}
+\PY{l+s+sd}{    128 samples of cos(omega*t + delta) in (\PYZhy{}pi,pi).\PYZdq{}\PYZdq{}\PYZdq{}}
+    
+    \PY{n}{N} \PY{o}{=} \PY{l+m+mi}{128}
+    \PY{n}{delta\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{n}{N}
+    \PY{n}{w\PYZus{}max} \PY{o}{=} \PY{n}{pi}\PY{o}{/}\PY{n}{delta\PYZus{}t}
+    \PY{n}{delta\PYZus{}w} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{w\PYZus{}max}\PY{o}{/}\PY{n}{N}
+    
+    \PY{n}{w} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{w\PYZus{}max}\PY{p}{,}\PY{n}{w\PYZus{}max}\PY{p}{,}\PY{n}{N}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    
+    \PY{k}{if} \PY{n}{window}\PY{p}{:}
+        \PY{n}{vec\PYZus{}} \PY{o}{=} \PY{n}{vec}\PY{o}{*}\PY{n}{fftshift}\PY{p}{(}\PY{n}{hamming}\PY{p}{(}\PY{n}{arange}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+    \PY{k}{else}\PY{p}{:}
+        \PY{n}{vec\PYZus{}} \PY{o}{=} \PY{n}{vec}
+        
+    \PY{n}{y} \PY{o}{=} \PY{n}{fft}\PY{p}{(}\PY{n}{vec\PYZus{}}\PY{p}{)}\PY{o}{/}\PY{n}{N}
+    \PY{n}{mag} \PY{o}{=} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{y}\PY{p}{)}
+    
+    \PY{n}{points} \PY{o}{=} \PY{n}{mag}\PY{p}{[}\PY{p}{:}\PY{n}{l}\PY{p}{]}
+    \PY{n}{ind} \PY{o}{=} \PY{n}{arange}\PY{p}{(}\PY{n}{l}\PY{p}{)}
+    \PY{n}{omega} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{points}\PY{o}{*}\PY{n}{ind}\PY{p}{)}\PY{o}{/}\PY{n}{np}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{n}{points}\PY{p}{)}
+    
+    
+    \PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{pi}\PY{p}{,}\PY{n}{pi}\PY{p}{,}\PY{n}{N}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+    \PY{n}{A} \PY{o}{=} \PY{n}{vstack}\PY{p}{(}\PY{p}{(}\PY{n}{cos}\PY{p}{(}\PY{n}{omega}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{p}{,}\PY{n}{sin}\PY{p}{(}\PY{n}{omega}\PY{o}{*}\PY{n}{t}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{o}{.}\PY{n}{T}
+    \PY{c+c1}{\PYZsh{}print(vec.shape)}
+    \PY{n}{a}\PY{p}{,}\PY{n}{b} \PY{o}{=} \PY{n}{lstsq}\PY{p}{(}\PY{n}{A}\PY{p}{,}\PY{n}{vec}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+    \PY{n}{delta} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{arctan}\PY{p}{(}\PY{n}{b}\PY{o}{/}\PY{n}{a}\PY{p}{)}
+    
+    \PY{k}{return} \PY{n}{omega}\PY{p}{,}\PY{n}{delta}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We test it with varying weighted averging windows again:
+
+	
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Estimator 2 without noise:
+k=1	MAE for omega: 1.0086	MAE for delta: 0.7789
+k=2	MAE for omega: 0.3435	MAE for delta: 0.1186
+k=3	MAE for omega: 0.1260	MAE for delta: 0.0332
+k=4	MAE for omega: 0.1155	MAE for delta: 0.0322
+k=5	MAE for omega: 0.1141	MAE for delta: 0.0220
+k=6	MAE for omega: 0.1140	MAE for delta: 0.0268
+k=7	MAE for omega: 0.1185	MAE for delta: 0.0316
+k=8	MAE for omega: 0.1363	MAE for delta: 0.0417
+k=9	MAE for omega: 0.1415	MAE for delta: 0.0356
+k=10	MAE for omega: 0.1494	MAE for delta: 0.0353
+
+    \end{Verbatim}
+
+	
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Estimator 2 with noise:
+k=1	MAE for omega: 1.0077	MAE for delta: 0.7626
+k=2	MAE for omega: 0.3589	MAE for delta: 0.1351
+k=3	MAE for omega: 0.1226	MAE for delta: 0.0406
+k=4	MAE for omega: 0.1148	MAE for delta: 0.0359
+k=5	MAE for omega: 0.1136	MAE for delta: 0.0488
+k=6	MAE for omega: 0.1223	MAE for delta: 0.0538
+k=7	MAE for omega: 0.1339	MAE for delta: 0.0345
+k=8	MAE for omega: 0.1796	MAE for delta: 0.0527
+k=9	MAE for omega: 0.2369	MAE for delta: 0.0725
+k=10	MAE for omega: 0.3129	MAE for delta: 0.1288
+
+    \end{Verbatim}
+
+	
+		
+    We again observe that a value of \(4\) or \(5\) is best suited for the
+weighted averaging window size. We also observe that the error in
+estimating \(\delta\) using the least squares approach is much less than
+using the phase of the DFT. The effect of noise is similar as in the
+first case. However, we must remember that the least squares approach is
+more computationally expensive compared to computing just one DFT.
+
+	
+
+	
+		
+    \section{Spectrogram analysis of a
+chirp}\label{spectrogram-analysis-of-a-chirp}
+
+	
+
+	
+		
+    We now analyse the frequency spectrum of a particular signal called a
+chirp.
+
+	
+
+	
+		
+    \subsection{The chirp signal}\label{the-chirp-signal}
+
+	
+
+	
+		
+    The chirp signal is a sinusoid whose frequency varies linearly with
+time. In this assignment, we look at the following chirp:
+
+\[\cos \left(16t\left(1.5 + \frac{t}{2 \pi}\right)\right)\]
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{chirp}\PY{p}{(}\PY{n}{t}\PY{p}{)}\PY{p}{:}
+    \PY{k}{return} \PY{n}{cos}\PY{p}{(}\PY{l+m+mi}{16}\PY{o}{*}\PY{n}{t}\PY{o}{*}\PY{p}{(}\PY{l+m+mf}{1.5} \PY{o}{+} \PY{n}{t}\PY{o}{/}\PY{p}{(}\PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    The chirp is plotted below:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_62_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \subsection{FFT of the chirp}\label{fft-of-the-chirp}
+
+	
+
+	
+		
+    We find the FFT of the chirp without windowing:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_65_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We observe that various frequencies in the range of 5-50 rad/s are
+present in the spectrum. This is because of the \(1/\omega\) decay of
+the Gibbs phenomenon. Let us window the chirp and observe the
+differences:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_67_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    We now observe that the frequencies are more confined to the range
+between 16 and 32, as expected. The extra components due to the
+discontinuity have been suppressed.
+
+	
+
+	
+		
+    \subsection{FFT over multiple windows}\label{fft-over-multiple-windows}
+
+	
+
+	
+		
+    To obtain a better picture of what is going in the chirp signal, we take
+the DFT of a small window of samples around each time instant, and plot
+a 2D surface of the resulting spectra vs time. We initially find the
+DFTs without using a Hamming window:
+
+	
+
+	
+		
+	
+	
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+		
+			
+		
+	
+	\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{N} \PY{o}{=} \PY{l+m+mi}{1024}
+\PY{n}{window} \PY{o}{=} \PY{l+m+mi}{64}
+\PY{n}{n\PYZus{}wins} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{N}\PY{o}{/}\PY{n}{window}\PY{p}{)}
+\PY{n}{delta\PYZus{}t} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{pi}\PY{o}{/}\PY{n}{N}
+\PY{n}{w\PYZus{}max} \PY{o}{=} \PY{n}{pi}\PY{o}{/}\PY{n}{delta\PYZus{}t}
+\PY{n}{delta\PYZus{}w} \PY{o}{=} \PY{l+m+mi}{2}\PY{o}{*}\PY{n}{w\PYZus{}max}\PY{o}{/}\PY{n}{N}
+    
+\PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{pi}\PY{p}{,}\PY{n}{pi}\PY{p}{,}\PY{n}{N}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}
+\PY{n}{y} \PY{o}{=} \PY{n}{chirp}\PY{p}{(}\PY{n}{t}\PY{p}{)}
+
+\PY{n}{ys}\PY{o}{=}\PY{p}{[}\PY{p}{]}
+\PY{n}{T}\PY{o}{=}\PY{l+m+mi}{26}
+\PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{arange}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{n}{N}\PY{o}{\PYZhy{}}\PY{n}{window}\PY{p}{)}\PY{p}{:}
+    \PY{n}{y\PYZus{}} \PY{o}{=} \PY{n}{y}\PY{p}{[}\PY{n}{i}\PY{p}{:}\PY{n}{i}\PY{o}{+}\PY{n}{window}\PY{p}{]}
+    \PY{n}{Y} \PY{o}{=} \PY{l+m+mi}{1}\PY{o}{/}\PY{n}{window} \PY{o}{*} \PY{n}{fftshift}\PY{p}{(}\PY{n}{fft}\PY{p}{(}\PY{n}{y\PYZus{}}\PY{p}{)}\PY{p}{)}
+    \PY{n}{ys}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{Y}\PY{p}{[}\PY{n}{T}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{n}{T}\PY{p}{]}\PY{p}{)}
+    
+\PY{n}{t} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{pi}\PY{p}{,}\PY{n}{pi}\PY{p}{,}\PY{n}{N}\PY{p}{)}\PY{p}{[}\PY{n+nb}{int}\PY{p}{(}\PY{n}{window}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{n+nb}{int}\PY{p}{(}\PY{n}{window}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}
+\PY{n}{w} \PY{o}{=} \PY{n}{linspace}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{w\PYZus{}max}\PY{p}{,}\PY{n}{w\PYZus{}max}\PY{p}{,}\PY{n}{window}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{[}\PY{n}{T}\PY{p}{:}\PY{o}{\PYZhy{}}\PY{n}{T}\PY{p}{]}
+\PY{n}{tt}\PY{p}{,}\PY{n}{ww} \PY{o}{=} \PY{n}{meshgrid}\PY{p}{(}\PY{n}{t}\PY{p}{,}\PY{n}{w}\PY{p}{)}
+\PY{n}{ys} \PY{o}{=} \PY{n}{array}\PY{p}{(}\PY{n}{ys}\PY{p}{)}
+\end{Verbatim}
+
+	
+
+	
+
+	
+		
+    We get the following spectrogram plots:
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_73_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_74_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_75_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  We observe that the frequency components with high magnitude are
+  concentrated around a frequency of 16 in the first half of the chirp,
+  and then suddenly move to a frequency of 32 in the second half. We
+  expect only the inital and final frequencies to be 16 and 32
+  respectively, and not over the whole of the first and second halfs.
+\item
+  This is because we have not windowed each section before taking the
+  DFT. This results in the component with integer valued frequencies
+  show up with higher amplitudes, and the remaining frequencies decay as
+  \(\frac{1}{\omega}\) due to the Gibbs phenomenon.
+\end{itemize}
+
+We repeat the process, but now we use a Hamming window before taking the
+DFT of each section of 64 samples.
+
+	
+
+	
+
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_78_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_79_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Assignment10_files/Assignment10_80_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+	
+		
+    \begin{itemize}
+\tightlist
+\item
+  We observe a much more gradual change in the frequency in the signal.
+\item
+  The change is linear from 16 to 32, matching with our expectations.
+\end{itemize}
+
+	
+
+	
+		
+    \section{Conclusions}\label{conclusions}
+
+\begin{itemize}
+\tightlist
+\item
+  From the above examples, it is clear that using a Hamming window
+  before taking a DFT helps in reducing the effect of Gibbs phenomenon
+  arising due to discontinuities in periodic extensions.
+\item
+  However, this comes at the cost of spectral leakage. This is basically
+  the blurring of the sharp peaks in the DFT. It occurs because of
+  convolution with the spectrum of the windowing function. Deltas in the
+  original spectrum are smoothed out and replaced by the spectrum of the
+  windowing function.
+\item
+  We used this windowed DFT to estimate the frequency and phase of an
+  unknown sinusoid from its samples.
+\item
+  By performing localized DFTs at different time isntants, we obtained a
+  time-frequency plot which allowed us to better analyse signals with
+  varying frequencies in time.
+\end{itemize}
+
+	
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
